@@ -32,3 +32,11 @@ collections:
           - { label: "العنوان", name: "contact_address", widget: "string" }
 
           - { label: "سطر الشعار في الفوتر", name: "footer_tagline", widget: "string" }
+          - { label: "شعار الموقع (اللوجو)", name: "site_logo", widget: "image" }
+          - { label: "رابط واتساب كامل", name: "whatsapp_link", widget: "string", hint: "مثال: https://wa.me/966503169240" }
+          - label: "شعارات العملاء"
+            name: "clients"
+            widget: list
+            fields:
+              - { label: "صورة الشعار", name: "image", widget: "image" }
+              - { label: "النص البديل (alt)", name: "alt", widget: "string" }

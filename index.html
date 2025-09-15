@@ -21,7 +21,7 @@
             <div class="header-content">
                 <div class="logo">
                     <a href="index.html">
-                        <img src="images/logo.png" alt="مكتب الحسن للمحاماة">
+                        <img id="site_logo" src="static\uploads\clints\logo.png" alt="مكتب الحسن للمحاماة">
                     </a>
                 </div>
                 <nav class="main-nav">
@@ -77,11 +77,11 @@
     <section class="hero-section">
         <div class="container">
             <div class="hero-content">
-                <h1>الحسن للمحاماة - حلول قانونية احترافية</h1>
-                <p>نقدم خدمات قانونية متميزة في مختلف المجالات القانونية</p>
+                <h1 id="hero_title">الحسن للمحاماة - حلول قانونية احترافية</h1>
+                <p id="hero_subtitle">نقدم خدمات قانونية متميزة في مختلف المجالات القانونية</p>
                 <div class="hero-buttons">
-                    <a href="pages/contact.html" class="primary-btn">تواصل معنا</a>
-                    <a href="pages/services.html" class="secondary-btn">خدماتنا</a>
+                    <a  id="hero_cta" href="pages/contact.html" class="primary-btn">تواصل معنا</a>
+                    <a  id="hero_cta2" href="pages/services.html" class="secondary-btn">خدماتنا</a>
                 </div>
             </div>
         </div>
@@ -338,27 +338,27 @@
                 <p>نفتخر بثقة عملائنا من الشركات والمؤسسات المرموقة</p>
             </div>
             <div class="clients-slider-container">
-                <div class="clients-slider">
+                <div class="clients-slider" id="clients_slider">
                     <div class="client-item">
-                        <img src="images/clients/FC_GROUP_color_Full.png" alt="Five Colors Group">
+                        <img src="static/uploads/clients/FC_GROUP_color_Full.png" alt="Five Colors Group">
                     </div>
                     <div class="client-item">
-                        <img src="images/clients/Cinegraph logo.png" alt="Cinegraph">
+                        <img src="static/uploads/clients/Cinegraph logo.png" alt="Cinegraph">
                     </div>
                     <div class="client-item">
-                        <img src="images/clients/khoyoot_logo.png" alt="خيوط المعازيب">
+                        <img src="static/uploads/clients/khoyoot_logo.png" alt="خيوط المعازيب">
                     </div>
                     <div class="client-item">
-                        <img src="images/clients/ep_saudi_logo-1.png" alt="EP Saudi">
+                        <img src="static/uploads/clients/ep_saudi_logo-1.png" alt="EP Saudi">
                     </div>
                     <div class="client-item">
-                        <img src="images/clients/alkorsi_logo-1.png" alt="الكرسي">
+                        <img src="static/uploads/clients/alkorsi_logo-1.png" alt="الكرسي">
                     </div>
                     <div class="client-item">
-                        <img src="images/clients/dar_huwaija_logo-1.png" alt="دار حويجة">
+                        <img src="static/uploads/clients/dar_huwaija_logo-1.png" alt="دار حويجة">
                     </div>
                     <div class="client-item">
-                        <img src="images/clients/logo_close.png" alt="Logo Close">
+                        <img src="static/uploads/clients/logo_close.png" alt="Logo Close">
                     </div>
                 </div>
                 <div class="slider-nav slider-prev">
@@ -380,19 +380,19 @@
                     <p>نحن هنا للإجابة على استفساراتكم وتقديم المساعدة القانونية</p>
                     <div class="info-item">
                         <i class="fas fa-phone"></i>
-                        <p>+966 50 316 9240</p>
+                        <p id="contact_phone" >+966 50 316 9240</p>
                     </div>
                     <div class="info-item">
                         <i class="fab fa-whatsapp"></i>
-                        <p><a href="https://wa.me/966503169240" target="_blank">تواصل معنا عبر واتساب</a></p>
+                        <p><a  id="whatsapp_link" href="https://wa.me/966503169240" target="_blank">تواصل معنا عبر واتساب</a></p>
                     </div>
                     <div class="info-item">
                         <i class="fas fa-envelope"></i>
-                        <p>Info@alhassanlawfirm.com</p>
+                        <p id="contact_email" >Info@alhassanlawfirm.com</p>
                     </div>
                     <div class="info-item">
                         <i class="fas fa-map-marker-alt"></i>
-                        <p>المملكة العربية السعودية، الأحساء، شارع الستين</p>
+                        <p id="contact_address" >المملكة العربية السعودية، الأحساء، شارع الستين</p>
                     </div>
                     <div class="social-media">
                         <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
@@ -437,7 +437,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="images/logo.png" alt="مكتب الحسن للمحاماة">
+                    <img id="site_logo" src="static/uploads/logo.png" alt="مكتب الحسن للمحاماة">
                     <p>مكتب الحسن للمحاماة - حلول قانونية احترافية</p>
                 </div>
                 <div class="footer-links">
@@ -486,5 +486,6 @@
     <!-- JavaScript -->
     <script src="js/main.js"></script>
     <script src="js/clients-slider.js"></script>
+    <script src="js/cms-content.js"></script>
 </body>
 </html>

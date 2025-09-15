@@ -12,5 +12,12 @@
   "contact_email": "Info@alhassanlawfirm.com",
   "contact_address": "المملكة العربية السعودية، الأحساء، شارع الستين",
 
-  "footer_tagline": "مكتب الحسن للمحاماة - حلول قانونية احترافية"
+  "footer_tagline": "مكتب الحسن للمحاماة - حلول قانونية احترافية",
+
+  "site_logo": "/uploads/logo.png",
+  "whatsapp_link": "https://wa.me/966503169240",
+  "clients": [
+    { "image": "/uploads/client1.png", "alt": "Client 1" },
+    { "image": "/uploads/client2.png", "alt": "Client 2" }
+  ]
 }
