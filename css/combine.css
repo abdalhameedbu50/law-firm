@@ -1,5 +1,3 @@
-
-
 /* Main Styles for Al-Hassan Law Firm Website */
 
 /* Variables */
@@ -73,7 +71,7 @@ img {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
     padding: var(--container-padding);
 }
@@ -205,33 +203,67 @@ header {
     left: 0;
     width: 100%;
     z-index: 1000;
+   max-height: 140px;
+    
 }
 
 .header-content {
     display: flex;
-    justify-content: space-between;
+    justify-content:space-around;
     align-items: center;
-    padding: 15px 0;
+    max-height: 140px;
+    position: relative;
+   
+    
+}
+
+/* Right-aligned Logo */
+.logo {
+    order: -1; /* Move to the beginning of flex container (right side in RTL) */
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .logo img {
-    height: 60px;
+    height: 6%; /* Reduced from 70px for better consistency */
+    width: auto;
+    object-fit: contain;
+    max-width: 100%;
+    padding: 5px; /* Add padding for better visual appearance */
+}
+
+/* Navigation */
+.main-nav {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
 }
 
 .main-nav ul {
     display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0;
+    padding: 0;
 }
 
+/* Navigation Items */
 .main-nav ul li {
-    margin: 0 15px;
+    margin: 0 10px;
     position: relative;
+    white-space: nowrap;
 }
 
+/* Navigation Links */
 .main-nav ul li a {
     color: var(--primary-color);
     font-weight: 600;
-    padding: 10px 0;
+    padding: 10px 8px;
     display: block;
+    font-size: 14px;
 }
 
 .main-nav ul li a:hover, .main-nav ul li a.active {
@@ -265,6 +297,7 @@ header {
     transform: translateY(10px);
     transition: all 0.3s ease;
     z-index: 100;
+    border-radius: 5px;
 }
 
 .dropdown:hover .dropdown-menu {
@@ -275,30 +308,42 @@ header {
 
 .dropdown-menu li {
     margin: 0 !important;
+    width: 100%;
 }
 
 .dropdown-menu li a {
     padding: 10px 15px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    display: block;
+    transition: all 0.3s ease;
 }
 
 .dropdown-menu li:last-child a {
     border-bottom: none;
 }
 
+.dropdown-menu li a:hover {
+    background-color: var(--neutral-color);
+    color: var(--primary-color);
+}
+
 /* Header Buttons */
 .header-buttons {
     display: flex;
+    justify-content: flex-end;
     align-items: center;
+    white-space: nowrap;
+    
 }
 
 .consultation-btn {
     background-color: var(--secondary-color);
     color: var(--white);
-    padding: 10px 20px;
+    padding: 8px 15px;
     border-radius: 5px;
     font-weight: 600;
-    margin-left: 15px;
+    margin-left: 10px;
+    font-size: 14px;
 }
 
 .consultation-btn:hover {
@@ -307,15 +352,16 @@ header {
 }
 
 .language-switch {
-    margin-left: 15px;
+    margin-left: 10px;
 }
 
 .language-switch a {
     color: var(--primary-color);
     font-weight: 600;
-    padding: 5px 10px;
+    padding: 4px 8px;
     border: 1px solid var(--primary-color);
     border-radius: 3px;
+    font-size: 14px;
 }
 
 .language-switch a:hover {
@@ -331,6 +377,7 @@ header {
     width: 30px;
     height: 21px;
     cursor: pointer;
+    margin-right: 15px;
 }
 
 .mobile-menu-toggle span {
@@ -388,11 +435,29 @@ header {
     padding: 30px;
     text-align: center;
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border-top: 5px solid var(--secondary-color);
 }
 
 .specialization-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.specialization-card::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 40px;
+    background-color: var(--white);
+    border-radius: 0 0 50% 50%;
+    border: 1px solid #eee;
+    border-top: none;
+    z-index: 1;
 }
 
 .specialization-card .icon {
@@ -403,7 +468,9 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 20px;
+    margin: 25px auto 20px;
+    position: relative;
+    z-index: 2;
 }
 
 .specialization-card .icon i {
@@ -424,6 +491,12 @@ header {
 /* Services Section */
 .services-section {
     background-color: var(--neutral-color);
+    background-image: linear-gradient(135deg, rgba(160, 125, 90, 0.05) 25%, transparent 25%), 
+                      linear-gradient(225deg, rgba(160, 125, 90, 0.05) 25%, transparent 25%),
+                      linear-gradient(45deg, rgba(160, 125, 90, 0.05) 25%, transparent 25%),
+                      linear-gradient(315deg, rgba(160, 125, 90, 0.05) 25%, var(--neutral-color) 25%);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 0, 10px -10px, 0px 10px;
 }
 
 .services-list {
@@ -512,6 +585,12 @@ header {
 /* Latest Articles Section */
 .latest-articles-section {
     background-color: var(--neutral-color);
+    background-image: linear-gradient(135deg, rgba(160, 125, 90, 0.05) 25%, transparent 25%), 
+                      linear-gradient(225deg, rgba(160, 125, 90, 0.05) 25%, transparent 25%),
+                      linear-gradient(45deg, rgba(160, 125, 90, 0.05) 25%, transparent 25%),
+                      linear-gradient(315deg, rgba(160, 125, 90, 0.05) 25%, var(--neutral-color) 25%);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 0, 10px -10px, 0px 10px;
 }
 
 .articles-grid {
@@ -525,16 +604,37 @@ header {
     border-radius: 5px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    position: relative;
+    border-top: 5px solid var(--secondary-color);
+}
+
+.article-card::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 40px;
+    background-color: var(--white);
+    border-radius: 0 0 50% 50%;
+    border: 1px solid #eee;
+    border-top: none;
+    z-index: 1;
 }
 
 .article-image img {
     width: 100%;
     height: 200px;
     object-fit: cover;
+    position: relative;
+    z-index: 2;
 }
 
 .article-content {
     padding: 20px;
+    position: relative;
+    z-index: 2;
 }
 
 .article-content .date {
@@ -699,6 +799,15 @@ footer {
     background-color: var(--footer-bg);
     color: var(--white);
     padding-top: 80px;
+    position: relative;
+    border-top: 10px solid transparent;
+    border-image: repeating-linear-gradient(
+        -45deg,
+        var(--secondary-color),
+        var(--secondary-color) 5px,
+        transparent 5px,
+        transparent 10px
+    ) 10;
 }
 
 .footer-content {
@@ -841,10 +950,77 @@ footer {
     color: var(--white);
 }
 
+/* Ahsa-inspired geometric border for section headers */
+.section-header h2:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 5px;
+    background-color: transparent;
+    border-style: solid;
+    border-width: 0 10px 5px 10px;
+    border-color: transparent transparent var(--secondary-color) transparent;
+}
+
+/* Ahsa-inspired button style */
+.primary-btn, .secondary-btn, .consultation-btn, .submit-btn {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.primary-btn, .consultation-btn {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: 1px solid #806448;
+}
+
+.primary-btn:hover {
+    background-color: #806448;
+    color: var(--white);
+    border-color: #6F563F;
+}
+
+.secondary-btn {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    border: 1px solid #9A7B4F;
+}
+
+.secondary-btn:hover {
+    background-color: #9A7B4F;
+    color: var(--white);
+    border-color: #806448;
+}
+
+.submit-btn {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    border: 1px solid #9A7B4F;
+}
+
+.submit-btn:hover {
+    background-color: var(--primary-color);
+    border-color: #806448;
+}
+
 /* Responsive Styles */
 @media (max-width: 1200px) {
     .container {
         max-width: 960px;
+    }
+    
+    .main-nav ul li {
+        margin: 0 5px;
+    }
+    
+    .main-nav ul li a {
+        padding: 10px 5px;
+        font-size: 13px;
     }
 }
 
@@ -873,60 +1049,98 @@ footer {
     .footer-content {
         grid-template-columns: repeat(2, 1fr);
     }
-}
-
-@media (max-width: 768px) {
-    .container {
-        max-width: 540px;
+    
+    /* Mobile Navigation */
+    .header-content {
+        position: relative;
     }
     
-    .mobile-menu-toggle {
-        display: flex;
+    .logo {
+        position: relative;
+        margin-right: auto;
+        margin-left: 0;
+    }
+    
+    .logo img {
+        height: 50px;
     }
     
     .main-nav {
-        position: fixed;
-        top: 90px;
-        right: -100%;
-        width: 80%;
-        height: calc(100vh - 90px);
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 100%;
         background-color: var(--white);
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
-        overflow-y: auto;
+        z-index: 1000;
     }
     
     .main-nav.active {
-        right: 0;
+        display: block;
     }
     
     .main-nav ul {
         flex-direction: column;
-        padding: 20px;
+        align-items: flex-start;
     }
     
     .main-nav ul li {
+        width: 100%;
         margin: 0;
         border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     }
     
     .main-nav ul li a {
-        padding: 15px 0;
+        padding: 12px 15px;
     }
     
     .dropdown-menu {
         position: static;
+        box-shadow: none;
         opacity: 1;
         visibility: visible;
         transform: none;
-        box-shadow: none;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease;
+        display: none;
+        width: 100%;
+        padding-right: 15px;
     }
     
     .dropdown.active .dropdown-menu {
-        max-height: 500px;
+        display: block;
+    }
+    
+    .mobile-menu-toggle {
+        display: block;
+        cursor: pointer;
+        margin-right: 15px;
+    }
+    
+    .mobile-menu-toggle span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background-color: var(--primary-color);
+        margin: 5px 0;
+        transition: all 0.3s ease;
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 540px;
     }
     
     .hero-content h1 {
@@ -989,159 +1203,4 @@ footer {
     .client-logo {
         width: 50%;
     }
-}
-
-
-/* Ahsa-inspired background pattern for neutral sections */
-.services-section, .latest-articles-section {
-    background-color: var(--neutral-color);
-    background-image: linear-gradient(135deg, rgba(160, 125, 90, 0.05) 25%, transparent 25%), 
-                      linear-gradient(225deg, rgba(160, 125, 90, 0.05) 25%, transparent 25%),
-                      linear-gradient(45deg, rgba(160, 125, 90, 0.05) 25%, transparent 25%),
-                      linear-gradient(315deg, rgba(160, 125, 90, 0.05) 25%, var(--neutral-color) 25%);
-    background-size: 20px 20px;
-    background-position: 0 0, 10px 0, 10px -10px, 0px 10px;
-}
-
-
-
-/* Ahsa-inspired border for section headers */
-.section-header h2:after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px; /* Increased width */
-    height: 5px; /* Increased height */
-    background-color: transparent; /* Remove solid color */
-    border-style: solid;
-    border-width: 0 10px 5px 10px; /* Create a triangle/geometric shape */
-    border-color: transparent transparent var(--secondary-color) transparent;
-}
-
-
-
-/* Ahsa-inspired arch shape for card tops */
-.specialization-card, .article-card {
-    position: relative;
-    overflow: hidden; /* Ensure pseudo-element stays within bounds */
-    border-top: 5px solid var(--secondary-color); /* Add a top border for emphasis */
-}
-
-.specialization-card::before, .article-card::before {
-    content: '';
-    position: absolute;
-    top: -20px; /* Position above the card */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%; /* Adjust width as needed */
-    height: 40px; /* Adjust height as needed */
-    background-color: var(--white); /* Match card background */
-    border-radius: 0 0 50% 50%; /* Create the bottom half of an arch */
-    border: 1px solid #eee; /* Optional subtle border */
-    border-top: none;
-    z-index: 1; /* Place behind content if needed, adjust padding */
-}
-
-/* Adjust padding for content to avoid overlap with arch */
-.specialization-card .icon, .article-image {
-    position: relative; /* Ensure content is above the pseudo-element */
-    z-index: 2;
-    margin-top: 25px; /* Add space for the arch */
-}
-
-.article-content {
-     position: relative; /* Ensure content is above the pseudo-element */
-    z-index: 2;
-}
-
-
-
-/* Ahsa-inspired button style - simulating wood and studs */
-.primary-btn, .secondary-btn, .consultation-btn, .submit-btn {
-    position: relative;
-    overflow: hidden;
-    border-radius: 3px; /* Sharper edges */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
-}
-
-.primary-btn, .consultation-btn {
-    background-color: var(--primary-color);
-    color: var(--white);
-    border: 1px solid #806448; /* Darker brown border */
-}
-
-.primary-btn:hover {
-    background-color: #806448; /* Darker brown on hover */
-    color: var(--white);
-    border-color: #6F563F;
-}
-
-.secondary-btn {
-    background-color: var(--secondary-color);
-    color: var(--white);
-    border: 1px solid #9A7B4F; /* Darker gold/bronze border */
-}
-
-.secondary-btn:hover {
-    background-color: #9A7B4F; /* Darker gold/bronze on hover */
-    color: var(--white);
-    border-color: #806448;
-}
-
-.submit-btn {
-    background-color: var(--secondary-color);
-    color: var(--white);
-    border: 1px solid #9A7B4F;
-}
-
-.submit-btn:hover {
-    background-color: var(--primary-color);
-    border-color: #806448;
-}
-
-/* Adding simulated studs - optional, might be too detailed */
-/*.primary-btn::after, .secondary-btn::after, .consultation-btn::after, .submit-btn::after {
-    content: '';
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    width: 4px;
-    height: 4px;
-    background-color: rgba(0,0,0,0.2);
-    border-radius: 50%;
-    box-shadow: 5px 5px 0 rgba(0,0,0,0.2), -5px -5px 0 rgba(0,0,0,0.2), 5px -5px 0 rgba(0,0,0,0.2), -5px 5px 0 rgba(0,0,0,0.2); /* Example placement */
-/*}*/
-
-
-
-body {
-    font-family: var(--body-font);
-    color: var(--text-color);
-    line-height: 1.6;
-    background-color: var(--white);
-    /* Subtle noise/texture overlay removed based on user feedback */
-    /* background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABnSURBVHja7M5BDQAwCAMh+L+dOQQEh8FMBaLMSqXUd+77+f7/f/8/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgZgE5fQE+bkaN0gAAAABJRU5ErkJggg=='); */
-    /* background-repeat: repeat; */
-    direction: rtl;
-}
-
-
-
-/* Ahsa-inspired geometric border for footer top */
-footer {
-    background-color: var(--footer-bg);
-    color: var(--white);
-    padding-top: 80px;
-    position: relative;
-    /* Add a patterned top border */
-    border-top: 10px solid transparent;
-    border-image: repeating-linear-gradient(
-        -45deg,
-        var(--secondary-color),
-        var(--secondary-color) 5px,
-        transparent 5px,
-        transparent 10px
-    ) 10;
 }
