@@ -21,7 +21,7 @@
             <div class="header-content">
                 <div class="logo">
                     <a href="index.html">
-                        <img src="images/logo.png" alt="مكتب الحسن للمحاماة">
+                        <img id="site-logo" src="images/logo.png" alt="مكتب الحسن للمحاماة">
                     </a>
                 </div>
                 <nav class="main-nav">
@@ -334,11 +334,11 @@
     <section class="clients-section">
         <div class="container">
             <div class="section-header">
-                <h2>عملاؤنا</h2>
-                <p>نفتخر بثقة عملائنا من الشركات والمؤسسات المرموقة</p>
+                <h2 id="clients-title" >عملاؤنا</h2>
+                <p id="clients-subtitle" >نفتخر بثقة عملائنا من الشركات والمؤسسات المرموقة</p>
             </div>
             <div class="clients-slider-container">
-                <div class="clients-slider">
+                <div  id="clients-logos"  class="clients-slider">
                     <div class="client-item">
                         <img src="images/clients/FC_GROUP_color_Full.png" alt="Five Colors Group">
                     </div>
@@ -380,25 +380,25 @@
                     <p>نحن هنا للإجابة على استفساراتكم وتقديم المساعدة القانونية</p>
                     <div class="info-item">
                         <i class="fas fa-phone"></i>
-                        <p>+966 50 316 9240</p>
+                        <p><span id="contact-phone">+966 50 316 9240</span></p></p>
                     </div>
                     <div class="info-item">
                         <i class="fab fa-whatsapp"></i>
-                        <p><a href="https://wa.me/966503169240" target="_blank">تواصل معنا عبر واتساب</a></p>
+                        <p><a id="contact-whatsapp" href="https://wa.me/966503169240" target="_blank">تواصل معنا عبر واتساب</a></p>
                     </div>
                     <div class="info-item">
                         <i class="fas fa-envelope"></i>
-                        <p>Info@alhassanlawfirm.com</p>
+                        <p><span id="contact-email">Info@alhassanlawfirm.com</span></p></p>
                     </div>
                     <div class="info-item">
                         <i class="fas fa-map-marker-alt"></i>
-                        <p>المملكة العربية السعودية، الأحساء، شارع الستين</p>
+                        <p><span id="contact-address">المملكة العربية السعودية، الأحساء، شارع الستين</span></p>
                     </div>
                     <div class="social-media">
-                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a  id="social-twitter" href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a  id="social-linkedin" href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                        <a id="social-facebook" href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                        <a id="social-instagram" href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 <div class="contact-form">
@@ -437,7 +437,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="images/logo.png" alt="مكتب الحسن للمحاماة">
+                    <img  id="site-logo" src="images/logo.png" alt="مكتب الحسن للمحاماة">
                     <p>مكتب الحسن للمحاماة - حلول قانونية احترافية</p>
                 </div>
                 <div class="footer-links">
@@ -455,9 +455,9 @@
                 </div>
                 <div class="footer-contact">
                     <h3>معلومات الاتصال</h3>
-                    <p><i class="fas fa-phone"></i> +966 50 316 9240</p>
-                    <p><i class="fas fa-envelope"></i> Info@alhassanlawfirm.com</p>
-                    <p><i class="fas fa-map-marker-alt"></i> المملكة العربية السعودية، الأحساء، شارع الستين</p>
+                    <p><i class="fas fa-phone"></i> <span id="contact-phone">+966 50 316 9240</span></p></p>
+                    <p><i class="fas fa-envelope"></i> <span id="contact-email">Info@alhassanlawfirm.com</span></p></p>
+                    <p><i class="fas fa-map-marker-alt"></i> <span id="contact-address">المملكة العربية السعودية، الأحساء، شارع الستين</span></p>
                 </div>
                 <div class="footer-newsletter">
                     <h3>النشرة البريدية</h3>
@@ -486,5 +486,6 @@
     <!-- JavaScript -->
     <script src="js/main.js"></script>
     <script src="js/clients-slider.js"></script>
+    <script src="js/cms-content.js"></script>
 </body>
 </html>
