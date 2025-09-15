@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Al-Hassan Law Firm</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/nav-update.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Additional Contact Page Styles */
+        .contact-info-section {
+            padding: 80px 0;
+        }
+        
+        .contact-info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .contact-info-item {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-info-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-info-item .icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary-color);
+            color: #fff;
+            font-size: 30px;
+            border-radius: 50%;
+        }
+        
+        .contact-info-item h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .contact-info-item p {
+            color: var(--text-color);
+            margin-bottom: 15px;
+        }
+        
+        .contact-info-item a {
+            color: var(--secondary-color);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-info-item a:hover {
+            color: var(--primary-color);
+        }
+        
+        .contact-form-section {
+            padding: 80px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .contact-form-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 50px;
+        }
+        
+        .contact-form {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .form-submit {
+            margin-top: 30px;
+        }
+        
+        .form-submit button {
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .form-submit button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .contact-image {
+            border-radius: 10px;
+            overflow: hidden;
+            height: 100%;
+        }
+        
+        .contact-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .map-section {
+            padding: 80px 0;
+        }
+        
+        .map-container {
+            margin-top: 50px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            height: 500px;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .social-media-section {
+            padding: 80px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .social-media-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .social-media-item {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .social-media-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .social-media-item .icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .social-media-item h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .social-media-item a {
+            display: inline-block;
+            padding: 8px 20px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .social-media-item a:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        @media screen and (max-width: 992px) {
+            .contact-info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .contact-form-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-media-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media screen and (max-width: 576px) {
+            .contact-info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-media-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="../index.html">
+                        <img src="../../images/logo.png" alt="Al-Hassan Law Firm">
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li class="dropdown">
+                            <a href="services.html">Our Services</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="services/legal-consultations.html">Legal Consultations</a></li>
+                                <li><a href="services/litigation.html">Litigation & Disputes</a></li>
+                                <li><a href="services/bankruptcy.html">Bankruptcy Applications</a></li>
+                                <li><a href="services/contract-drafting.html">Contract Drafting</a></li>
+                                <li><a href="services/intellectual-property.html">Intellectual Property Registration</a></li>
+                                <li><a href="services/foreign-investment.html">Foreign Investment & Company Establishment</a></li>
+                                <li><a href="services/legal-management.html">Legal Management for Enterprises</a></li>
+                                <li><a href="services/debt-collection.html">Debt Collection</a></li>
+                                <li><a href="services/franchise.html">Franchise Agreements</a></li>
+                                <li><a href="services/documentation.html">Documentation Services</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="specializations.html">Areas of Expertise</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="specializations/industry-energy.html">Industry & Energy</a></li>
+                                <li><a href="specializations/entertainment-cinema.html">Entertainment & Cinema</a></li>
+                                <li><a href="specializations/real-estate-contracting.html">Real Estate & Contracting</a></li>
+                                <li><a href="specializations/finance-banking.html">Finance & Banking</a></li>
+                                <li><a href="specializations/labor-employment.html">Labor & Employment</a></li>
+                                <li><a href="specializations/healthcare-insurance.html">Healthcare & Insurance</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="clients.html">Our Clients</a></li>
+                        <li><a href="blog.html">Legal Blog</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contact.html" class="active">Contact Us</a></li>
+                    </ul>
+                </nav>
+                <div class="header-buttons">
+                    <a href="consultation.html" class="consultation-btn">Book a Consultation</a>
+                    <div class="language-switch">
+                        <a href="../../pages/contact.html">العربية</a>
+                    </div>
+                    <div class="mobile-menu-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <ul class="breadcrumb">
+                <li><a href="../index.html">Home</a></li>
+                <li>Contact Us</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Contact Info Section -->
+    <section class="contact-info-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contact Information</h2>
+                <p>Get in touch with us through various communication channels</p>
+            </div>
+            
+            <div class="contact-info-grid">
+                <div class="contact-info-item">
+                    <div class="icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Address</h3>
+                    <p>Kingdom of Saudi Arabia, Al-Ahsa, Sixty Street</p>
+                    <a href="https://goo.gl/maps/123" target="_blank">View on Map</a>
+                </div>
+                
+                <div class="contact-info-item">
+                    <div class="icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>Phone</h3>
+                    <p>Call us directly for urgent inquiries</p>
+                    <a href="tel:+966503169240">+966 50 316 9240</a>
+                </div>
+                
+                <div class="contact-info-item">
+                    <div class="icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3>WhatsApp</h3>
+                    <p>Contact us via WhatsApp for inquiries and appointments</p>
+                    <a href="https://wa.me/966503169240" target="_blank">Contact via WhatsApp</a>
+                </div>
+                
+                <div class="contact-info-item">
+                    <div class="icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p>Email us and we'll respond as soon as possible</p>
+                    <a href="mailto:Info@alhassanlawfirm.com">Info@alhassanlawfirm.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-form-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get in Touch</h2>
+                <p>Fill out the form below and we'll get back to you as soon as possible</p>
+            </div>
+            
+            <div class="contact-form-container">
+                <div class="contact-form">
+                    <form action="#" method="post">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Select Subject</option>
+                                <option value="Legal Consultation">Legal Consultation</option>
+                                <option value="General Inquiry">General Inquiry</option>
+                                <option value="Service Request">Service Request</option>
+                                <option value="Suggestion">Suggestion</option>
+                                <option value="Complaint">Complaint</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        
+                        <div class="form-submit">
+                            <button type="submit">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="contact-image">
+                    <img src="../../images/contact.jpg" alt="Contact Us">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Location</h2>
+                <p>You can visit us at our office during official working hours</p>
+            </div>
+            
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3573.0404522107!2d49.58245!3d25.422889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDI1JzIyLjQiTiA0OcKwMzQnNTYuOCJF!5e0!3m2!1sen!2ssa!4v1617291283757!5m2!1sen!2ssa" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="social-media-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Follow Us on Social Media</h2>
+                <p>Stay updated with the latest news and legal updates</p>
+            </div>
+            
+            <div class="social-media-grid">
+                <div class="social-media-item">
+                    <div class="icon">
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                    <h3>Twitter</h3>
+                    <a href="https://twitter.com/alhassanlawfirm" target="_blank">Follow</a>
+                </div>
+                
+                <div class="social-media-item">
+                    <div class="icon">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <h3>LinkedIn</h3>
+                    <a href="https://linkedin.com/company/alhassanlawfirm" target="_blank">Follow</a>
+                </div>
+                
+                <div class="social-media-item">
+                    <div class="icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <h3>Instagram</h3>
+                    <a href="https://instagram.com/alhassanlawfirm" target="_blank">Follow</a>
+                </div>
+                
+                <div class="social-media-item">
+                    <div class="icon">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <h3>YouTube</h3>
+                    <a href="https://youtube.com/alhassanlawfirm" target="_blank">Subscribe</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Working Hours Section -->
+    <section class="working-hours-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Working Hours</h2>
+                <p>You can visit or call us during the following working hours</p>
+            </div>
+            
+            <div class="working-hours-container">
+                <div class="working-hours-table">
+                    <table>
+                        <tr>
+                            <th>Day</th>
+                            <th>Working Hours</th>
+                        </tr>
+                        <tr>
+                            <td>Sunday - Thursday</td>
+                            <td>8:00 AM - 5:00 PM</td>
+                        </tr>
+                        <tr>
+                            <td>Friday</td>
+                            <td>Closed</td>
+                        </tr>
+                        <tr>
+                            <td>Saturday</td>
+                            <td>9:00 AM - 2:00 PM</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="working-hours-note">
+                    <p>* Appointments outside official working hours can be arranged for emergency cases</p>
+                    <p>* We provide remote consultation services throughout the week by prior appointment</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Do You Need Legal Consultation?</h2>
+                <p>Our team of lawyers and legal consultants is ready to assist you</p>
+                <div class="cta-buttons">
+                    <a href="consultation.html" class="primary-btn">Book a Legal Consultation</a>
+                    <a href="tel:+966503169240" class="secondary-btn">Call Us Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../../images/logo.png" alt="Al-Hassan Law Firm">
+                    <p>Al-Hassan Law Firm - Professional Legal Solutions</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Our Services</a></li>
+                        <li><a href="specializations.html">Areas of Expertise</a></li>
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="clients.html">Our Clients</a></li>
+                        <li><a href="blog.html">Legal Blog</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-phone"></i> +966 50 316 9240</p>
+                    <p><i class="fas fa-envelope"></i> Info@alhassanlawfirm.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Kingdom of Saudi Arabia, Al-Ahsa, Sixty Street</p>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter to receive the latest legal updates</p>
+                    <form action="#" method="post">
+                        <input type="email" name="email" placeholder="Email Address" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Al-Hassan Law Firm. All Rights Reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-of-service.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script src="../../js/main.js"></script>
+</body>
+</html>

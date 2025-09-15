@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الأسئلة الشائعة - مكتب الحسن للمحاماة</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/nav-update.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Additional FAQ Page Styles */
+        .faq-container {
+            margin-top: 50px;
+        }
+        
+        .faq-categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .category-btn {
+            padding: 10px 20px;
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            border-radius: 5px;
+            color: var(--primary-color);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .category-btn.active, .category-btn:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+        
+        .faq-item {
+            background-color: #fff;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question h3 {
+            font-size: 18px;
+            margin: 0;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question .icon {
+            font-size: 20px;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question.active {
+            background-color: var(--primary-color);
+        }
+        
+        .faq-question.active h3, .faq-question.active .icon {
+            color: #fff;
+        }
+        
+        .faq-answer {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-answer.active {
+            padding: 20px 30px;
+            max-height: 1000px;
+        }
+        
+        .faq-answer p {
+            margin: 0;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .faq-search {
+            margin-bottom: 40px;
+        }
+        
+        .faq-search form {
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .faq-search input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid #eee;
+            border-radius: 5px 0 0 5px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-search input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+        
+        .faq-search button {
+            padding: 15px 25px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-search button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .contact-cta {
+            text-align: center;
+            margin-top: 50px;
+            padding: 40px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+        }
+        
+        .contact-cta h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .contact-cta p {
+            margin-bottom: 25px;
+            color: var(--text-color);
+        }
+        
+        @media screen and (max-width: 768px) {
+            .faq-question h3 {
+                font-size: 16px;
+            }
+            
+            .faq-question {
+                padding: 15px 20px;
+            }
+            
+            .faq-answer.active {
+                padding: 15px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="../index.html">
+                        <img src="../images/logo.png" alt="مكتب الحسن للمحاماة">
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="../index.html">الرئيسية</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li class="dropdown">
+                            <a href="services.html">خدماتنا</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="services/legal-consultations.html">الاستشارات القانونية</a></li>
+                                <li><a href="services/litigation.html">الدعاوى والتقاضي</a></li>
+                                <li><a href="services/bankruptcy.html">طلبات الإفلاس</a></li>
+                                <li><a href="services/contract-drafting.html">صياغة العقود</a></li>
+                                <li><a href="services/intellectual-property.html">تسجيل حقوق الملكية الفكرية</a></li>
+                                <li><a href="services/foreign-investment.html">الاستثمار الأجنبي وتأسيس الشركات</a></li>
+                                <li><a href="services/legal-management.html">الإدارة القانونية للمنشآت</a></li>
+                                <li><a href="services/debt-collection.html">تحصيل الديون</a></li>
+                                <li><a href="services/franchise.html">الامتياز التجاري</a></li>
+                                <li><a href="services/documentation.html">خدمات التوثيق</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="specializations.html">مجالات التخصص</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="specializations/industry-energy.html">الصناعة والطاقة</a></li>
+                                <li><a href="specializations/entertainment-cinema.html">الترفيه والسينما</a></li>
+                                <li><a href="specializations/real-estate-contracting.html">العقارات والمقاولات</a></li>
+                                <li><a href="specializations/finance-banking.html">المالية والمصرفية</a></li>
+                                <li><a href="specializations/labor-employment.html">العمل والعمال</a></li>
+                                <li><a href="specializations/healthcare-insurance.html">الرعاية الصحية والتأمين</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="team.html">فريق العمل</a></li>
+                        <li><a href="blog.html">المدونة القانونية</a></li>
+                        <li><a href="faq.html" class="active">الأسئلة الشائعة</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                    </ul>
+                </nav>
+                <div class="header-buttons">
+                    <a href="consultation.html" class="consultation-btn">حجز استشارة قانونية</a>
+                    <div class="language-switch">
+                        <a href="../en/pages/faq.html">English</a>
+                    </div>
+                    <div class="mobile-menu-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <div class="container">
+            <h1>الأسئلة الشائعة</h1>
+            <ul class="breadcrumb">
+                <li><a href="../index.html">الرئيسية</a></li>
+                <li>الأسئلة الشائعة</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>الأسئلة الشائعة</h2>
+                <p>إجابات على الأسئلة المتكررة حول خدماتنا القانونية</p>
+            </div>
+            
+            <div class="faq-search">
+                <form action="#" method="get">
+                    <input type="text" placeholder="ابحث عن سؤال...">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+            
+            <div class="faq-categories">
+                <button class="category-btn active" data-category="all">جميع الأسئلة</button>
+                <button class="category-btn" data-category="services">خدماتنا</button>
+                <button class="category-btn" data-category="consultations">الاستشارات</button>
+                <button class="category-btn" data-category="litigation">التقاضي</button>
+                <button class="category-btn" data-category="fees">الرسوم والأتعاب</button>
+            </div>
+            
+            <div class="faq-container">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item" data-category="services">
+                    <div class="faq-question">
+                        <h3>ما هي الخدمات القانونية التي يقدمها مكتب الحسن للمحاماة؟</h3>
+                        <div class="icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>يقدم مكتب الحسن للمحاماة مجموعة واسعة من الخدمات القانونية التي تشمل الاستشارات القانونية، الدعاوى والتقاضي، طلبات الإفلاس، صياغة وتدقيق العقود، تسجيل حقوق الملكية الفكرية، الاستثمار الأجنبي وتأسيس الشركات، الإدارة القانونية للمنشآت، تحصيل الديون، الامتياز التجاري، وخدمات التوثيق. يمكنكم الاطلاع على تفاصيل كل خدمة في صفحة الخدمات على موقعنا.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="faq-item" data-category="consultations">
+                    <div class="faq-question">
+                        <h3>كيف يمكنني حجز استشارة قانونية مع أحد محامي المكتب؟</h3>
+                        <div class="icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>يمكنكم حجز استشارة قانونية من خلال عدة طرق: عبر الموقع الإلكتروني من خلال صفحة "حجز استشارة قانونية"، أو عن طريق الاتصال المباشر على رقم الهاتف +966 50 316 9240، أو من خلال إرسال بريد إلكتروني إلى Info@alhassanlawfirm.com. سيتم التواصل معكم لتحديد موعد الاستشارة سواء كانت حضورية في مقر المكتب أو عن بعد عبر وسائل الاتصال المرئي.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="faq-item" data-category="fees">
+                    <div class="faq-question">
+                        <h3>ما هي تكلفة الاستشارة القانونية؟</h3>
+                        <div class="icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>تختلف تكلفة الاستشارة القانونية حسب نوع الاستشارة وطبيعتها ومدتها. الاستشارات الأولية البسيطة قد تكون مجانية في بعض الحالات، بينما تتراوح تكلفة الاستشارات المتخصصة والمفصلة بين 500 إلى 1500 ريال سعودي. يمكنكم الاستفسار عن التكلفة المحددة عند حجز الاستشارة، كما نقدم باقات استشارات شهرية للشركات والمؤسسات بأسعار تنافسية.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="faq-item" data-category="litigation">
+                    <div class="faq-question">
+                        <h3>ما هي المستندات المطلوبة لرفع دعوى قضائية؟</h3>
+                        <div class="icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>تختلف المستندات المطلوبة لرفع دعوى قضائية حسب نوع الدعوى وموضوعها، ولكن بشكل عام تشمل: الهوية الوطنية أو الإقامة أو السجل التجاري للمدعي، المستندات المؤيدة للدعوى (عقود، مراسلات، إيصالات، تقارير، صور، إلخ)، وكالة محامي موثقة (في حال توكيل محامي)، وأي مستندات أخرى ذات صلة بموضوع الدعوى. سيقوم محامي المكتب بتحديد المستندات المطلوبة بدقة بعد دراسة حالتكم.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 5 -->
+                <div class="faq-item" data-category="services">
+                    <div class="faq-question">
+                        <h3>هل يقدم المكتب خدمات قانونية للأفراد أم للشركات فقط؟</h3>
+                        <div class="icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>يقدم مكتب الحسن للمحاماة خدماته القانونية لكل من الأفراد والشركات والمؤسسات على حد سواء. نحن نتعامل مع قضايا الأفراد في مختلف المجالات مثل قضايا الأحوال الشخصية والعمالية والعقارية والتجارية، كما نقدم خدمات متخصصة للشركات والمؤسسات في مجالات الاستثمار وتأسيس الشركات والعقود التجارية وحماية الملكية الفكرية وغيرها.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 6 -->
+                <div class="faq-item" data-category="fees">
+                    <div class="faq-question">
+                        <h3>كيف يتم احتساب أتعاب المحاماة في القضايا؟</h3>
+                        <div class="icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>يتم احتساب أتعاب المحاماة في القضايا بعدة طرق حسب طبيعة القضية وتعقيدها ومدتها المتوقعة. الطرق الشائعة تشمل: الأتعاب الثابتة (مبلغ محدد للقضية بالكامل)، الأتعاب بالساعة (تحديد سعر للساعة الواحدة من العمل القانوني)، أو نسبة من قيمة المطالبة (خاصة في قضايا التحصيل والمطالبات المالية). في جميع الحالات، يتم الاتفاق على الأتعاب بشكل واضح وكتابي قبل بدء العمل في القضية.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 7 -->
+                <div class="faq-item" data-category="consultations">
+                    <div class="faq-question">
+                        <h3>هل يمكن الحصول على استشارة قانونية عن بعد؟</h3>
+                        <div class="icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>نعم، يقدم مكتب الحسن للمحاماة خدمة الاستشارات القانونية عن بعد عبر وسائل الاتصال المرئي مثل Zoom أو Microsoft Teams أو عبر الهاتف. هذه الخدمة متاحة للعملاء داخل وخارج المملكة العربية السعودية، وتوفر المرونة والراحة مع الحفاظ على جودة الاستشارة القانونية. يمكنكم حجز استشارة عن بعد من خلال موقعنا الإلكتروني أو الاتصال المباشر بالمكتب.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 8 -->
+                <div class="faq-item" data-category="litigation">
+                    <div class="faq-question">
+                        <h3>ما هي مدة التقاضي المتوقعة للقضايا؟</h3>
+                        <div class="icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>تختلف مدة التقاضي حسب نوع القضية ودرجة تعقيدها والمحكمة المختصة. بشكل عام، قد تستغرق القضايا البسيطة من 3 إلى 6 أشهر، بينما قد تستمر القضايا المعقدة لمدة سنة أو أكثر، خاصة إذا تم استئناف الحكم. في مكتب الحسن للمحاماة، نسعى دائماً لتسريع إجراءات التقاضي قدر الإمكان مع الحفاظ على جودة التمثيل القانوني، ونقدم للعملاء تقديراً واقعياً للمدة المتوقعة بناءً على خبرتنا في قضايا مماثلة.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 9 -->
+                <div class="faq-item" data-category="services">
+                    <div class="faq-question">
+                        <h3>هل يقدم المكتب خدمات تسجيل العلامات التجارية؟</h3>
+                        <div class="icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>نعم، يقدم مكتب الحسن للمحاماة خدمات تسجيل وحماية العلامات التجارية في المملكة العربية السعودية ودول الخليج والدول العربية والعالمية. نحن وكلاء معتمدون من الهيئة السعودية للملكية الفكرية، ونقدم خدمات شاملة تتضمن البحث عن العلامات المشابهة، إعداد طلبات التسجيل، متابعة الإجراءات مع الجهات المختصة، الرد على الاعتراضات، تجديد العلامات، ومتابعة حالات التعدي على العلامات التجارية.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 10 -->
+                <div class="faq-item" data-category="services">
+                    <div class="faq-question">
+                        <h3>ما هي خدمات الإدارة القانونية للمنشآت التي يقدمها المكتب؟</h3>
+                        <div class="icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>تشمل خدمات الإدارة القانونية للمنشآت التي يقدمها مكتب الحسن للمحاماة: مراجعة وصياغة العقود والاتفاقيات، تقديم الاستشارات القانونية اليومية، إعداد وتحديث اللوائح والسياسات الداخلية، تمثيل المنشأة في النزاعات القانونية، التعامل مع الجهات الحكومية والتنظيمية، حماية حقوق الملكية الفكرية، المساعدة في الامتثال للأنظمة واللوائح، وتقديم التدريب القانوني للموظفين. نقدم هذه الخدمات من خلال عقود سنوية أو شهرية بحسب احتياجات المنشأة.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 11 -->
+                <div class="faq-item" data-category="fees">
+                    <div class="faq-question">
+                        <h3>هل هناك رسوم لحضور الجلسات القضائية؟</h3>
+                        <div class="icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>عادة ما تكون رسوم حضور الجلسات القضائية مشمولة ضمن أتعاب المحاماة المتفق عليها في عقد التوكيل. في بعض الحالات، خاصة إذا كانت المحكمة في مدينة أخرى غير مقر المكتب، قد تكون هناك رسوم إضافية لتغطية تكاليف السفر والإقامة. يتم توضيح جميع هذه التفاصيل في عقد التوكيل قبل بدء العمل في القضية لضمان الشفافية الكاملة.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 12 -->
+                <div class="faq-item" data-category="consultations">
+                    <div class="faq-question">
+                        <h3>هل يمكن الحصول على استشارة قانونية مجانية؟</h3>
+                        <div class="icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>نقدم في بعض الحالات استشارات قانونية أولية مجانية ومختصرة لتقييم القضية وتحديد الخطوات الأولية. هذه الاستشارات المجانية محدودة في نطاقها ومدتها، وتهدف إلى مساعدة العميل في فهم وضعه القانوني بشكل عام. للحصول على استشارة قانونية مفصلة وشاملة، يتم تحديد رسوم الاستشارة حسب طبيعتها ومدتها. كما نقدم خدمات قانونية مجانية (pro bono) في بعض القضايا الإنسانية والخيرية كجزء من مسؤوليتنا الاجتماعية.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-cta">
+                <h3>لم تجد إجابة لسؤالك؟</h3>
+                <p>يمكنك التواصل معنا مباشرة وسيقوم فريقنا القانوني بالرد على استفساراتك في أقرب وقت ممكن</p>
+                <a href="contact.html" class="primary-btn">تواصل معنا</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>هل تحتاج إلى استشارة قانونية؟</h2>
+                <p>فريقنا من المحامين والمستشارين القانونيين جاهز لمساعدتك</p>
+                <div class="cta-buttons">
+                    <a href="consultation.html" class="primary-btn">حجز استشارة قانونية</a>
+                    <a href="contact.html" class="secondary-btn">تواصل معنا</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../images/logo.png" alt="مكتب الحسن للمحاماة">
+                    <p>مكتب الحسن للمحاماة - حلول قانونية احترافية</p>
+                </div>
+                <div class="footer-links">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="../index.html">الرئيسية</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="services.html">خدماتنا</a></li>
+                        <li><a href="specializations.html">مجالات التخصص</a></li>
+                        <li><a href="team.html">فريق العمل</a></li>
+                        <li><a href="blog.html">المدونة القانونية</a></li>
+                        <li><a href="faq.html">الأسئلة الشائعة</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>معلومات الاتصال</h3>
+                    <p><i class="fas fa-phone"></i> +966 50 316 9240</p>
+                    <p><i class="fas fa-envelope"></i> Info@alhassanlawfirm.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> المملكة العربية السعودية، الأحساء، شارع الستين</p>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>النشرة البريدية</h3>
+                    <p>اشترك في نشرتنا البريدية للحصول على آخر المستجدات القانونية</p>
+                    <form action="#" method="post">
+                        <input type="email" name="email" placeholder="البريد الإلكتروني" required>
+                        <button type="submit">اشتراك</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 مكتب الحسن للمحاماة. جميع الحقوق محفوظة.</p>
+                <div class="footer-bottom-links">
+                    <a href="privacy-policy.html">سياسة الخصوصية</a>
+                    <a href="terms-of-service.html">شروط الاستخدام</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // FAQ Accordion
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    // Toggle active class on question
+                    this.classList.toggle('active');
+                    
+                    // Toggle icon
+                    const icon = this.querySelector('.icon i');
+                    if (icon.classList.contains('fa-plus')) {
+                        icon.classList.remove('fa-plus');
+                        icon.classList.add('fa-minus');
+                    } else {
+                        icon.classList.remove('fa-minus');
+                        icon.classList.add('fa-plus');
+                    }
+                    
+                    // Toggle answer visibility
+                    const answer = this.nextElementSibling;
+                    answer.classList.toggle('active');
+                });
+            });
+            
+            // FAQ Category Filtering
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    categoryBtns.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Get category value
+                    const category = this.getAttribute('data-category');
+                    
+                    // Filter FAQ items
+                    faqItems.forEach(item => {
+                        if (category === 'all' || item.getAttribute('data-category') === category) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // FAQ Search
+            const searchForm = document.querySelector('.faq-search form');
+            const searchInput = document.querySelector('.faq-search input');
+            
+            searchForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const searchTerm = searchInput.value.toLowerCase();
+                
+                if (searchTerm.trim() === '') {
+                    faqItems.forEach(item => {
+                        item.style.display = 'block';
+                    });
+                    return;
+                }
+                
+                faqItems.forEach(item => {
+                    const question = item.querySelector('.faq-question h3').textContent.toLowerCase();
+                    const answer = item.querySelector('.faq-answer p').textContent.toLowerCase();
+                    
+                    if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

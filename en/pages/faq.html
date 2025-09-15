@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Al-Hassan Law Firm</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/nav-update.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Additional FAQ Page Styles */
+        .faq-container {
+            margin-top: 50px;
+        }
+        
+        .faq-categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .category-btn {
+            padding: 10px 20px;
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            border-radius: 5px;
+            color: var(--primary-color);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .category-btn.active, .category-btn:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+        
+        .faq-item {
+            background-color: #fff;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question h3 {
+            font-size: 18px;
+            margin: 0;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question .icon {
+            font-size: 20px;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question.active {
+            background-color: var(--primary-color);
+        }
+        
+        .faq-question.active h3, .faq-question.active .icon {
+            color: #fff;
+        }
+        
+        .faq-answer {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-answer.active {
+            padding: 20px 30px;
+            max-height: 1000px;
+        }
+        
+        .faq-answer p {
+            margin: 0;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .faq-search {
+            margin-bottom: 40px;
+        }
+        
+        .faq-search form {
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .faq-search input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid #eee;
+            border-radius: 5px 0 0 5px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-search input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+        
+        .faq-search button {
+            padding: 15px 25px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-search button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .contact-cta {
+            text-align: center;
+            margin-top: 50px;
+            padding: 40px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+        }
+        
+        .contact-cta h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .contact-cta p {
+            margin-bottom: 25px;
+            color: var(--text-color);
+        }
+        
+        @media screen and (max-width: 768px) {
+            .faq-question h3 {
+                font-size: 16px;
+            }
+            
+            .faq-question {
+                padding: 15px 20px;
+            }
+            
+            .faq-answer.active {
+                padding: 15px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="../index.html">
+                        <img src="../../images/logo.png" alt="Al-Hassan Law Firm">
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li class="dropdown">
+                            <a href="services.html">Our Services</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="services/legal-consultations.html">Legal Consultations</a></li>
+                                <li><a href="services/litigation.html">Litigation & Disputes</a></li>
+                                <li><a href="services/bankruptcy.html">Bankruptcy Applications</a></li>
+                                <li><a href="services/contract-drafting.html">Contract Drafting</a></li>
+                                <li><a href="services/intellectual-property.html">Intellectual Property Registration</a></li>
+                                <li><a href="services/foreign-investment.html">Foreign Investment & Company Establishment</a></li>
+                                <li><a href="services/legal-management.html">Legal Management for Enterprises</a></li>
+                                <li><a href="services/debt-collection.html">Debt Collection</a></li>
+                                <li><a href="services/franchise.html">Franchise Agreements</a></li>
+                                <li><a href="services/documentation.html">Documentation Services</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="specializations.html">Areas of Expertise</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="specializations/industry-energy.html">Industry & Energy</a></li>
+                                <li><a href="specializations/entertainment-cinema.html">Entertainment & Cinema</a></li>
+                                <li><a href="specializations/real-estate-contracting.html">Real Estate & Contracting</a></li>
+                                <li><a href="specializations/finance-banking.html">Finance & Banking</a></li>
+                                <li><a href="specializations/labor-employment.html">Labor & Employment</a></li>
+                                <li><a href="specializations/healthcare-insurance.html">Healthcare & Insurance</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="clients.html">Our Clients</a></li>
+                        <li><a href="blog.html">Legal Blog</a></li>
+                        <li><a href="faq.html" class="active">FAQ</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </nav>
+                <div class="header-buttons">
+                    <a href="consultation.html" class="consultation-btn">Book a Consultation</a>
+                    <div class="language-switch">
+                        <a href="../../pages/faq.html">العربية</a>
+                    </div>
+                    <div class="mobile-menu-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <div class="container">
+            <h1>Frequently Asked Questions</h1>
+            <ul class="breadcrumb">
+                <li><a href="../index.html">Home</a></li>
+                <li>FAQ</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Answers to common questions about our legal services</p>
+            </div>
+            
+            <div class="faq-search">
+                <form action="#" method="get">
+                    <input type="text" placeholder="Search for a question...">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+            
+            <div class="faq-categories">
+                <button class="category-btn active" data-category="all">All Questions</button>
+                <button class="category-btn" data-category="services">Our Services</button>
+                <button class="category-btn" data-category="consultations">Consultations</button>
+                <button class="category-btn" data-category="litigation">Litigation</button>
+                <button class="category-btn" data-category="fees">Fees & Charges</button>
+            </div>
+            
+            <div class="faq-container">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item" data-category="services">
+                    <div class="faq-question">
+                        <h3>What legal services does Al-Hassan Law Firm provide?</h3>
+                        <div class="icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Al-Hassan Law Firm provides a wide range of legal services including legal consultations, litigation and disputes, bankruptcy applications, contract drafting and review, intellectual property rights registration, foreign investment and company establishment, legal management for enterprises, debt collection, franchise agreements, and documentation services. You can find details of each service on our Services page.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="faq-item" data-category="consultations">
+                    <div class="faq-question">
+                        <h3>How can I book a legal consultation with one of your lawyers?</h3>
+                        <div class="icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can book a legal consultation through several methods: via our website through the "Book a Legal Consultation" page, by directly calling +966 50 316 9240, or by sending an email to Info@alhassanlawfirm.com. We will contact you to schedule the consultation, which can be in-person at our office or remotely via video conferencing.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="faq-item" data-category="fees">
+                    <div class="faq-question">
+                        <h3>What is the cost of a legal consultation?</h3>
+                        <div class="icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The cost of a legal consultation varies depending on the type, nature, and duration of the consultation. Initial basic consultations may be free in some cases, while specialized and detailed consultations range from 500 to 1,500 Saudi Riyals. You can inquire about the specific cost when booking the consultation. We also offer monthly consultation packages for companies and institutions at competitive rates.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="faq-item" data-category="litigation">
+                    <div class="faq-question">
+                        <h3>What documents are required to file a lawsuit?</h3>
+                        <div class="icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The documents required to file a lawsuit vary depending on the type and subject of the case, but generally include: national ID, residence permit, or commercial registration of the plaintiff; supporting documents for the case (contracts, correspondence, receipts, reports, photos, etc.); notarized power of attorney (if appointing a lawyer); and any other documents relevant to the case. Our lawyers will specify the exact documents needed after studying your case.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 5 -->
+                <div class="faq-item" data-category="services">
+                    <div class="faq-question">
+                        <h3>Does the firm provide legal services to individuals or only to companies?</h3>
+                        <div class="icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Al-Hassan Law Firm provides legal services to both individuals and companies/institutions alike. We handle individual cases in various fields such as personal status, labor, real estate, and commercial cases, and we also provide specialized services to companies and institutions in areas of investment, company establishment, commercial contracts, intellectual property protection, and more.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 6 -->
+                <div class="faq-item" data-category="fees">
+                    <div class="faq-question">
+                        <h3>How are attorney fees calculated for cases?</h3>
+                        <div class="icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Attorney fees for cases are calculated in several ways depending on the nature, complexity, and expected duration of the case. Common methods include: fixed fees (a specific amount for the entire case), hourly fees (setting a price for each hour of legal work), or a percentage of the claim value (especially in collection and financial claims cases). In all cases, fees are clearly agreed upon in writing before starting work on the case.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 7 -->
+                <div class="faq-item" data-category="consultations">
+                    <div class="faq-question">
+                        <h3>Can I get a remote legal consultation?</h3>
+                        <div class="icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, Al-Hassan Law Firm offers remote legal consultation services via video conferencing platforms such as Zoom or Microsoft Teams, or by phone. This service is available to clients inside and outside Saudi Arabia, providing flexibility and convenience while maintaining the quality of legal consultation. You can book a remote consultation through our website or by directly contacting the office.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 8 -->
+                <div class="faq-item" data-category="litigation">
+                    <div class="faq-question">
+                        <h3>What is the expected duration of litigation for cases?</h3>
+                        <div class="icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The duration of litigation varies depending on the type of case, its complexity, and the competent court. Generally, simple cases may take 3 to 6 months, while complex cases may continue for a year or more, especially if the judgment is appealed. At Al-Hassan Law Firm, we always strive to expedite litigation procedures as much as possible while maintaining the quality of legal representation, and we provide clients with a realistic estimate of the expected duration based on our experience in similar cases.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 9 -->
+                <div class="faq-item" data-category="services">
+                    <div class="faq-question">
+                        <h3>Does the firm provide trademark registration services?</h3>
+                        <div class="icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, Al-Hassan Law Firm provides trademark registration and protection services in Saudi Arabia, Gulf countries, Arab countries, and internationally. We are authorized agents of the Saudi Authority for Intellectual Property, and we provide comprehensive services including searching for similar trademarks, preparing registration applications, following up on procedures with the competent authorities, responding to objections, renewing trademarks, and following up on trademark infringement cases.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 10 -->
+                <div class="faq-item" data-category="services">
+                    <div class="faq-question">
+                        <h3>What legal management services for enterprises does the firm offer?</h3>
+                        <div class="icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The legal management services for enterprises offered by Al-Hassan Law Firm include: reviewing and drafting contracts and agreements, providing daily legal consultations, preparing and updating internal regulations and policies, representing the enterprise in legal disputes, dealing with governmental and regulatory bodies, protecting intellectual property rights, assisting in compliance with regulations and laws, and providing legal training for employees. We offer these services through annual or monthly contracts according to the needs of the enterprise.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 11 -->
+                <div class="faq-item" data-category="fees">
+                    <div class="faq-question">
+                        <h3>Are there fees for attending court sessions?</h3>
+                        <div class="icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Usually, the fees for attending court sessions are included within the attorney fees agreed upon in the power of attorney contract. In some cases, especially if the court is in a city other than the office location, there may be additional fees to cover travel and accommodation costs. All these details are clarified in the power of attorney contract before starting work on the case to ensure complete transparency.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 12 -->
+                <div class="faq-item" data-category="consultations">
+                    <div class="faq-question">
+                        <h3>Can I get a free legal consultation?</h3>
+                        <div class="icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>In some cases, we provide free initial and brief legal consultations to assess the case and determine the initial steps. These free consultations are limited in scope and duration, and aim to help the client understand their legal situation in general. For a detailed and comprehensive legal consultation, consultation fees are determined according to its nature and duration. We also provide free legal services (pro bono) in some humanitarian and charitable cases as part of our social responsibility.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-cta">
+                <h3>Didn't Find an Answer to Your Question?</h3>
+                <p>You can contact us directly and our legal team will respond to your inquiries as soon as possible</p>
+                <a href="contact.html" class="primary-btn">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Do You Need Legal Consultation?</h2>
+                <p>Our team of lawyers and legal consultants is ready to assist you</p>
+                <div class="cta-buttons">
+                    <a href="consultation.html" class="primary-btn">Book a Legal Consultation</a>
+                    <a href="contact.html" class="secondary-btn">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../../images/logo.png" alt="Al-Hassan Law Firm">
+                    <p>Al-Hassan Law Firm - Professional Legal Solutions</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Our Services</a></li>
+                        <li><a href="specializations.html">Areas of Expertise</a></li>
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="clients.html">Our Clients</a></li>
+                        <li><a href="blog.html">Legal Blog</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-phone"></i> +966 50 316 9240</p>
+                    <p><i class="fas fa-envelope"></i> Info@alhassanlawfirm.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Kingdom of Saudi Arabia, Al-Ahsa, Sixty Street</p>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter to receive the latest legal updates</p>
+                    <form action="#" method="post">
+                        <input type="email" name="email" placeholder="Email Address" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Al-Hassan Law Firm. All Rights Reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-of-service.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script src="../../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // FAQ Accordion
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    // Toggle active class on question
+                    this.classList.toggle('active');
+                    
+                    // Toggle icon
+                    const icon = this.querySelector('.icon i');
+                    if (icon.classList.contains('fa-plus')) {
+                        icon.classList.remove('fa-plus');
+                        icon.classList.add('fa-minus');
+                    } else {
+                        icon.classList.remove('fa-minus');
+                        icon.classList.add('fa-plus');
+                    }
+                    
+                    // Toggle answer visibility
+                    const answer = this.nextElementSibling;
+                    answer.classList.toggle('active');
+                });
+            });
+            
+            // FAQ Category Filtering
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    categoryBtns.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Get category value
+                    const category = this.getAttribute('data-category');
+                    
+                    // Filter FAQ items
+                    faqItems.forEach(item => {
+                        if (category === 'all' || item.getAttribute('data-category') === category) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // FAQ Search
+            const searchForm = document.querySelector('.faq-search form');
+            const searchInput = document.querySelector('.faq-search input');
+            
+            searchForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const searchTerm = searchInput.value.toLowerCase();
+                
+                if (searchTerm.trim() === '') {
+                    faqItems.forEach(item => {
+                        item.style.display = 'block';
+                    });
+                    return;
+                }
+                
+                faqItems.forEach(item => {
+                    const question = item.querySelector('.faq-question h3').textContent.toLowerCase();
+                    const answer = item.querySelector('.faq-answer p').textContent.toLowerCase();
+                    
+                    if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
