@@ -1,50 +1,52 @@
-// Clients Slider Functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const slider = document.querySelector('.clients-slider');
-    const prevBtn = document.querySelector('.slider-prev');
-    const nextBtn = document.querySelector('.slider-next');
-    
-    if (!slider || !prevBtn || !nextBtn) return;
-    
-    const slideWidth = slider.querySelector('.client-item').offsetWidth + 30; // width + margin
-    const visibleSlides = Math.floor(slider.parentElement.offsetWidth / slideWidth);
-    const totalSlides = slider.querySelectorAll('.client-item').length;
-    let currentPosition = 0;
-    
-    // Initialize slider position
-    updateSliderPosition();
-    
-    // Previous button click
-    prevBtn.addEventListener('click', function() {
-        if (currentPosition > 0) {
-            currentPosition--;
-            updateSliderPosition();
-        }
-    });
-    
-    // Next button click
-    nextBtn.addEventListener('click', function() {
-        if (currentPosition < totalSlides - visibleSlides) {
-            currentPosition++;
-            updateSliderPosition();
-        }
-    });
-    
-    // Update slider position
-    function updateSliderPosition() {
-        slider.style.transform = `translateX(${currentPosition * -slideWidth}px)`;
-        
-        // Update button states
-        prevBtn.classList.toggle('disabled', currentPosition === 0);
-        nextBtn.classList.toggle('disabled', currentPosition >= totalSlides - visibleSlides);
-    }
-    
-    // Handle window resize
-    window.addEventListener('resize', function() {
-        const newVisibleSlides = Math.floor(slider.parentElement.offsetWidth / slideWidth);
-        if (newVisibleSlides !== visibleSlides && currentPosition > totalSlides - newVisibleSlides) {
-            currentPosition = Math.max(0, totalSlides - newVisibleSlides);
-            updateSliderPosition();
-        }
-    });
+document.addEventListener('DOMContentLoaded', () => {
+  const slider      = document.querySelector('.clients-slider');
+  const wrapper     = document.querySelector('.clients-slider-wrapper');
+  const prevBtn     = document.querySelector('.slider-prev');
+  const nextBtn     = document.querySelector('.slider-next');
+  const items       = document.querySelectorAll('.client-item');
+
+  let itemWidth     = calcItemWidth();
+  let visibleCount  = calcVisibleCount();
+  let currentIndex  = 0;
+  let maxIndex      = items.length - visibleCount;
+
+  function calcItemWidth() {
+    const style = window.getComputedStyle(items[0]);
+    return items[0].offsetWidth +
+           parseInt(style.marginLeft) +
+           parseInt(style.marginRight);
+  }
+
+  function calcVisibleCount() {
+    return Math.floor(wrapper.offsetWidth / itemWidth);
+  }
+
+  function moveSlider() {
+    slider.style.transform = `translateX(${-currentIndex * itemWidth}px)`;
+    updateButtons();
+  }
+
+  function updateButtons() {
+    prevBtn.classList.toggle('disabled', currentIndex === 0);
+    nextBtn.classList.toggle('disabled', currentIndex >= maxIndex);
+  }
+
+  function changeSlide(direction) {
+    const newIndex = currentIndex + direction;
+    if (newIndex < 0 || newIndex > maxIndex) return;
+    currentIndex = newIndex;
+    moveSlider();
+  }
+
+  prevBtn.addEventListener('click', () => changeSlide(-1));
+  nextBtn.addEventListener('click', () => changeSlide(1));
+
+  window.addEventListener('resize', () => {
+    itemWidth    = calcItemWidth();
+    visibleCount = calcVisibleCount();
+    maxIndex     = items.length - visibleCount;
+    moveSlider();
+  });
+
+  moveSlider();
 });
