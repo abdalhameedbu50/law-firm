@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: https://github.com/abdalhameedbu50/law-firm
+  repo: abdalhameedbu50/law-firm
   branch: main
 
 media_folder: "static/uploads"     # where images are saved in the repo
