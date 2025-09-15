@@ -10,12 +10,25 @@ public_folder: "/uploads"          # how images are referenced by the site
 publish_mode: editorial_workflow
 
 collections:
-  - name: "posts"
-    label: "Posts"
-    folder: "content/posts"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Body", name: "body", widget: "markdown"}
+  # Home page content (stored as a JSON file)
+  - name: "home"
+    label: "الصفحة الرئيسية"
+    files:
+      - label: "محتوى الصفحة الرئيسية"
+        name: "homepage"
+        file: "content/home.json"
+        fields:
+          - { label: "عنوان الهيرو", name: "hero_title", widget: "string" }
+          - { label: "وصف الهيرو", name: "hero_subtitle", widget: "text" }
+
+          - { label: "نص الزر الأساسي", name: "hero_cta_text", widget: "string" }
+          - { label: "رابط الزر الأساسي", name: "hero_cta_url", widget: "string" }
+          - { label: "نص الزر الثانوي", name: "hero_cta2_text", widget: "string" }
+          - { label: "رابط الزر الثانوي", name: "hero_cta2_url", widget: "string" }
+
+          - { label: "الهاتف", name: "contact_phone", widget: "string" }
+          - { label: "رقم واتساب (بدون +)", name: "contact_whatsapp", widget: "string" }
+          - { label: "البريد الإلكتروني", name: "contact_email", widget: "string" }
+          - { label: "العنوان", name: "contact_address", widget: "string" }
+
+          - { label: "سطر الشعار في الفوتر", name: "footer_tagline", widget: "string" }
