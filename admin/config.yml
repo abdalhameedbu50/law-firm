@@ -1,18 +1,56 @@
 backend:
   name: github
-  repo: your-github-username/your-repo-name   # 🔑 change this
+  repo: abdalhameedbu50/law-firm   # ← your GitHub repo
   branch: main
 
-media_folder: "static/uploads"      # where images are stored in repo
-public_folder: "/uploads"           # path used in your site
+media_folder: "images"   # where new images uploaded through CMS will be saved in repo
+public_folder: "/images" # public URL for those images
 
 collections:
-  - name: "posts"
-    label: "Posts"
-    folder: "content/posts"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Body", name: "body", widget: "markdown" }
+  # 1️⃣ Logo
+  - name: "logo"
+    label: "شعار الموقع"
+    files:
+      - label: "شعار الموقع"
+        name: "logo_file"
+        file: "content/logo.json"
+        fields:
+          - { label: "صورة الشعار", name: "logo", widget: "image" }
+
+  # 2️⃣ Clients section
+  - name: "clients"
+    label: "قسم العملاء"
+    files:
+      - label: "قسم العملاء"
+        name: "clients_file"
+        file: "content/clients.json"
+        fields:
+          - { label: "عنوان القسم", name: "clients_title", widget: "string" }
+          - { label: "وصف القسم", name: "clients_subtitle", widget: "text" }
+          - { label: "شعارات العملاء", name: "clients_logos", widget: "list", field: { label: "صورة العميل", name: "logo", widget: "image" } }
+
+  # 3️⃣ Contact section
+  - name: "contact"
+    label: "قسم التواصل"
+    files:
+      - label: "قسم التواصل"
+        name: "contact_file"
+        file: "content/contact.json"
+        fields:
+          - { label: "هاتف الاتصال", name: "contact_phone", widget: "string" }
+          - { label: "رابط واتساب", name: "contact_whatsapp", widget: "string" }
+          - { label: "البريد الإلكتروني", name: "contact_email", widget: "string" }
+          - { label: "العنوان", name: "contact_address", widget: "text" }
+
+  # 4️⃣ Social links
+  - name: "social"
+    label: "روابط التواصل الاجتماعي"
+    files:
+      - label: "روابط التواصل الاجتماعي"
+        name: "social_file"
+        file: "content/social.json"
+        fields:
+          - { label: "تويتر", name: "social_twitter", widget: "string" }
+          - { label: "لينكدإن", name: "social_linkedin", widget: "string" }
+          - { label: "فيسبوك", name: "social_facebook", widget: "string" }
+          - { label: "إنستغرام", name: "social_instagram", widget: "string" }
