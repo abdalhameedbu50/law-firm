@@ -25,45 +25,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-
-
-dropdowns.forEach(dropdown => {
-    const menu = dropdown.querySelector('.dropdown-menu');
-    if (menu) {
-        dropdown.addEventListener('mouseenter', function() {
-            // Only adjust on desktop
-            if (window.innerWidth > 768) {
-                menu.style.left = '';
-                menu.style.right = '';
-                const rect = menu.getBoundingClientRect();
-                if (rect.right > window.innerWidth) {
-                    // Move menu to left if it overflows right
-                    menu.style.left = 'auto';
-                    menu.style.right = '0';
-                }
-                if (rect.left < 0) {
-                    // Move menu to right if it overflows left
-                    menu.style.left = '0';
-                    menu.style.right = 'auto';
-                }
-            }
-        });
-        // Reset position on mouseleave
-        dropdown.addEventListener('mouseleave', function() {
-            menu.style.left = '';
-            menu.style.right = '';
-        });
-    }
-});
-
-
-
-
-
-
-
-
-
     
     // Back to Top Button
     const backToTopButton = document.querySelector('.back-to-top');
