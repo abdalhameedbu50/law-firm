@@ -75,12 +75,12 @@ img {
     max-width: 1300px;
     margin: 0 auto;
       padding: 0 auto;
-     
 
 }
 
 section {
     padding: var(--section-padding);
+    
 }
 
 /* =============== BUTTONS =============== */
@@ -209,13 +209,14 @@ section {
 /* =============== HEADER =============== */
 header {
     background-color: var(--white);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    height: 120px; /* Fixed height for layout stability */
+    height: 110px; /* Fixed height for layout stability */
+    border-radius: 0 0 15px 15px;
 }
 
 .header-content {
@@ -225,6 +226,8 @@ header {
     align-items: center;
     height: 100%;
     flex-wrap: nowrap;
+    padding-left: 10px ;
+     
   
 }
   
@@ -275,10 +278,7 @@ header {
     padding: 10px 8px;
     display: block;
     font-size: 14px;
-      white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 150px; /* Optional: limit width per item */
+    white-space: nowrap;
 }
 
 .main-nav ul li a:hover,
@@ -305,34 +305,46 @@ header {
 .dropdown-menu {
     position: absolute;
     top: 100%;
-    right: 0;
+      flex-direction: column;
+    right: 0; /* RTL aligned */
     background-color: var(--white);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    min-width: 200px;
+    
     opacity: 0;
     visibility: hidden;
     transform: translateY(10px);
     transition: all 0.3s ease;
     z-index: 100;
     border-radius: 5px;
+  
+    min-width: max-content; /* ← Automatically as wide as longest item */
+    width: max-content;
+    white-space: nowrap;
+    padding: 8px 0;
 }
+    
+
 
 .dropdown:hover .dropdown-menu {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+  
 }
 
 .dropdown-menu li {
-    margin: 0 !important;
-    width: 100%;
+     display: block !important;
+    padding: 0;
+    margin: 0;
 }
 
 .dropdown-menu li a {
+      display: block;
     padding: 10px 15px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    display: block;
     transition: all 0.3s ease;
+    white-space: nowrap;
+    text-align: right; /* RTL */
 }
 
 .dropdown-menu li:last-child a {
@@ -904,7 +916,7 @@ footer {
     flex: 1;
     padding: 10px 15px;
     border: none;
-    border-radius: 5px 0 0 5px;
+    border-radius: 0 5px  5px 0 ;
     font-family: var(--body-font);
 }
 
@@ -913,7 +925,7 @@ footer {
     color: var(--white);
     border: none;
     padding: 0 20px;
-    border-radius: 0 5px 5px 0;
+    border-radius: 5px 0 0 5px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -983,8 +995,16 @@ footer {
 
 /* =============== RESPONSIVE STYLES =============== */
 @media (max-width: 1200px) {
+  header {
+ 
+    height: 100px; /* Fixed height for layout stability */
+    
+  
+  }
     .container {
         max-width: 1000px;
+        
+        
     }
     
     .logo img {
@@ -1006,7 +1026,7 @@ footer {
     }
 
     header {
-        height: 140px;
+        height: 120px;
     }
 
     .header-content {
@@ -1026,7 +1046,7 @@ footer {
         background-color: var(--white);
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         z-index: 1000;
-        flex-direction: column;
+        overflow-x: auto;
         align-items: stretch;
     }
 
@@ -1094,6 +1114,9 @@ footer {
 @media (max-width: 768px) {
     .container {
         max-width: 540px;
+    }
+    header{
+        height: 120px;
     }
 
     .hero-content h1 {
