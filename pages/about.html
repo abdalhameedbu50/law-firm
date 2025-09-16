@@ -4,12 +4,867 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>من نحن - مكتب الحسن للمحاماة</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/nav-update.css">
+    <link rel="stylesheet" href="../css/combine.css">
+    
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Inline Styles for Enhanced Sections (Can be moved to combine.css) -->
+    <style>
+     
+
+        /* Enhanced Timeline Section */
+        .history-section {
+            padding: 6rem 0;
+            background: #f8f9fa;
+        }
+
+        .history-section .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .history-section .section-header h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .history-section .section-header p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        .timeline {
+            position: relative;
+            margin-top: 4rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, #87351a, #5b2c06);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background: #67320a;
+            border-radius: 50%;
+            position: absolute;
+            right: 50%;
+            transform: translateX(50%);
+            z-index: 2;
+            box-shadow: 0 0 0 6px #fff, 0 0 0 8px #764e09;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover .timeline-dot {
+            transform: translateX(50%) scale(1.2);
+        }
+
+        .timeline-content {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 45%;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+        }
+
+        .timeline-item .timeline-content::before {
+            left: -20px;
+            border-right-color: #fff;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            right: -20px;
+            left: auto;
+            border-left-color: #fff;
+            border-right-color: transparent;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .timeline-content h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content .date {
+            color: #753e0d;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Enhanced Why Choose Us Section */
+        .why-choose-us-section {
+            padding: 6rem 0;
+            background: #fff;
+        }
+
+        .why-choose-us-section .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .why-choose-us-section .section-header h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .why-choose-us-section .section-header p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-item {
+            padding: 2.5rem 2rem;
+            text-align: center;
+            border-radius: 12px;
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            background: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, #56390a, #7e4108);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-item:hover {
+            border-color: #6d350a;
+            transform: translateY(-10px);
+            background: rgba(0, 123, 255, 0.02);
+            box-shadow: 0 10px 40px rgba(0, 123, 255, 0.15);
+        }
+
+        .feature-item .icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #5f410b, #6d370b);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-item .icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: scale(0);
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover .icon {
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        .feature-item:hover .icon::before {
+            transform: scale(1);
+        }
+
+        .feature-item .icon i {
+            font-size: 2rem;
+            color: #fff;
+            position: relative;
+            z-index: 2;
+        }
+
+        .feature-item h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover h3 {
+            color: #75390b;
+        }
+
+        .feature-item p {
+            color: #666;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* Enhanced Team Preview Section */
+        .team-preview-section {
+            padding: 6rem 0;
+            background: #f8f9fa;
+        }
+
+        .team-preview-section .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .team-preview-section .section-header h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .team-preview-section .section-header p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        .team-preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .team-member {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .team-member::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, #692f08, #794006);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: all 0.3s ease;
+            z-index: 3;
+        }
+
+        .team-member:hover::before {
+            transform: scaleX(1);
+        }
+
+        .team-member:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 60px rgba(105, 63, 3, 0.2);
+        }
+
+        .member-image {
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.4s ease;
+        }
+
+        .team-member:hover .member-image img {
+            transform: scale(1.05);
+        }
+
+        .member-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(128, 58, 8, 0.8), rgba(119, 61, 6, 0.8));
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover .member-image::after {
+            opacity: 0.7;
+        }
+
+        .member-info {
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .member-info h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover .member-info h3 {
+            color: #622d0a;
+        }
+
+        .member-info .position {
+            color: #64350b;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+            font-size: 1rem;
+        }
+
+        .member-info p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: #f8f9fa;
+            color: #666;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #5e3807, #523305);
+            border-radius: 50%;
+            transform: scale(0);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover::before {
+            transform: scale(1);
+        }
+
+        .social-links a:hover {
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgb(76, 45, 4);
+        }
+
+        .social-links a i {
+            position: relative;
+            z-index: 2;
+            font-size: 1.1rem;
+        }
+
+        .view-all-team {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .primary-btn {
+            background: linear-gradient(135deg, #532c05, #5d3c07);
+            color: #fff;
+            padding: 1rem 2.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 4px 20px rgb(90, 39, 3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .primary-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.5s ease;
+        }
+
+        .primary-btn:hover::before {
+            left: 100%;
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgb(86, 49, 7);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .timeline::before {
+                right: 20px;
+                transform: none;
+            }
+
+            .timeline-item {
+                flex-direction: row !important;
+            }
+
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-right: 40px;
+            }
+
+            .timeline-content::before {
+                left: -20px !important;
+                right: auto !important;
+                border-right-color: #fff !important;
+                border-left-color: transparent !important;
+            }
+
+            .timeline-dot {
+                right: 20px;
+                transform: none;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .team-preview-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .history-section .section-header h2,
+            .why-choose-us-section .section-header h2,
+            .team-preview-section .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animation classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        about-section {
+    padding: 6rem 0;
+    background: #fff;
+    position: relative;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 123, 255, 0.15);
+    transition: all 0.4s ease;
+}
+
+.about-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(84, 48, 4, 0.918), rgb(86, 61, 6));
+    opacity: 0;
+    transition: all 0.4s ease;
+    z-index: 1;
+}
+
+.about-image:hover::before {
+    opacity: 0.3;
+}
+
+.about-image:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgb(100, 47, 4);
+}
+
+.about-image img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    transition: all 0.4s ease;
+    display: block;
+}
+
+.about-image:hover img {
+    transform: scale(1.05);
+}
+
+.about-text h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 2rem;
+    position: relative;
+    line-height: 1.2;
+}
+
+.about-text h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    right: 0;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(to left, #6c3606, #603906);
+    border-radius: 2px;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #666;
+    margin-bottom: 1.5rem;
+    text-align: justify;
+    transition: all 0.3s ease;
+}
+
+.about-text p:hover {
+    color: #555;
+}
+
+.about-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* Enhanced Vision & Mission Section */
+.vision-mission-section {
+    padding: 6rem 0;
+    background: #f8f9fa;
+    position: relative;
+}
+
+.vision-mission-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.vision-box,
+.mission-box,
+.values-box {
+    background: #fff;
+    padding: 3rem 2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+}
+
+.vision-box::before,
+.mission-box::before,
+.values-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(to right, #5f3905, #583905);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: all 0.4s ease;
+}
+
+.vision-box:hover::before,
+.mission-box:hover::before,
+.values-box:hover::before {
+    transform: scaleX(1);
+}
+
+.vision-box:hover,
+.mission-box:hover,
+.values-box:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 15px 60px rgb(81, 42, 2);
+    border-color: rgba(0, 123, 255, 0.1);
+    background: rgba(0, 123, 255, 0.02);
+}
+
+.vision-box .icon,
+.mission-box .icon,
+.values-box .icon {
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(135deg, #553104, #533205);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.vision-box .icon::before,
+.mission-box .icon::before,
+.values-box .icon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: scale(0);
+    transition: all 0.3s ease;
+}
+
+.vision-box:hover .icon,
+.mission-box:hover .icon,
+.values-box:hover .icon {
+    transform: scale(1.1) rotate(360deg);
+}
+
+.vision-box:hover .icon::before,
+.mission-box:hover .icon::before,
+.values-box:hover .icon::before {
+    transform: scale(1);
+}
+
+.vision-box .icon i,
+.mission-box .icon i,
+.values-box .icon i {
+    font-size: 2.2rem;
+    color: #fff;
+    position: relative;
+    z-index: 2;
+}
+
+.vision-box h3,
+.mission-box h3,
+.values-box h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.vision-box:hover h3,
+.mission-box:hover h3,
+.values-box:hover h3 {
+    color: #553706;
+}
+
+.vision-box p,
+.mission-box p,
+.values-box p {
+    color: #666;
+    line-height: 1.7;
+    font-size: 1rem;
+    text-align: justify;
+}
+
+/* Animation classes */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .about-section {
+        padding: 4rem 0;
+    }
+    
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+    
+    .about-image {
+        order: 1;
+    }
+    
+    .about-text {
+        order: 2;
+    }
+    
+    .about-text h2 {
+        font-size: 2rem;
+        text-align: center;
+    }
+    
+    .about-text h2::after {
+        right: 50%;
+        transform: translateX(50%);
+    }
+    
+    .about-image img {
+        height: 300px;
+    }
+    
+    .vision-mission-section {
+        padding: 4rem 0;
+    }
+    
+    .vision-mission-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+    
+    .vision-box,
+    .mission-box,
+    .values-box {
+        padding: 2rem 1.5rem;
+    }
+    
+    .vision-box .icon,
+    .mission-box .icon,
+    .values-box .icon {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 1.5rem;
+    }
+    
+    .vision-box .icon i,
+    .mission-box .icon i,
+    .values-box .icon i {
+        font-size: 1.8rem;
+    }
+    
+    .vision-box h3,
+    .mission-box h3,
+    .values-box h3 {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-text h2 {
+        font-size: 1.8rem;
+    }
+    
+    .about-text p {
+        font-size: 1rem;
+    }
+    
+    .vision-box,
+    .mission-box,
+    .values-box {
+        padding: 1.5rem 1rem;
+    }
+}
+    </style>
 </head>
 <body>
     <!-- Header Section -->
@@ -70,23 +925,31 @@
         </div>
     </header>
 
-    <!-- Page Banner -->
     <section class="page-banner">
         <div class="container">
-            <h1>من نحن</h1>
-            <ul class="breadcrumb">
-                <li><a href="../index.html">الرئيسية</a></li>
-                <li>من نحن</li>
-            </ul>
+           
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about-section">
+    <!-- Page Banner -->
+    <section class="section-header">
+        <div class="container">             
+            <h2>من نحن</h2>                      
+        </div>
+    </section>
+
+   <section class="about-section fade-in">
         <div class="container">
             <div class="about-content">
                 <div class="about-image">
-                    <img src="../images/about.jpg" alt="مكتب الحسن للمحاماة">
+               <img src="../images/ghost/ETAaenwXsAEqpVu.jpg"
+     alt="مكتب الحسن للمحاماة"
+     style="
+      
+        object-fit:fill;  ">
+      
+     
+
                 </div>
                 <div class="about-text">
                     <h2>مكتب الحسن للمحاماة</h2>
@@ -99,7 +962,7 @@
     </section>
 
     <!-- Vision & Mission Section -->
-    <section class="vision-mission-section">
+    <section class="vision-mission-section fade-in">
         <div class="container">
             <div class="vision-mission-grid">
                 <div class="vision-box">
@@ -127,48 +990,8 @@
         </div>
     </section>
 
-    <!-- Why Choose Us Section -->
-    <section class="why-choose-us-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>لماذا تختار مكتب الحسن للمحاماة</h2>
-                <p>نلتزم بتقديم خدمات قانونية متميزة تلبي توقعات عملائنا</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-item">
-                    <div class="icon">
-                        <i class="fas fa-balance-scale"></i>
-                    </div>
-                    <h3>الخبرة القانونية</h3>
-                    <p>فريق من المحامين ذوي الخبرة والكفاءة في مختلف المجالات القانونية</p>
-                </div>
-                <div class="feature-item">
-                    <div class="icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3>الاحترافية</h3>
-                    <p>نلتزم بأعلى معايير الاحترافية والمهنية في تقديم الخدمات القانونية</p>
-                </div>
-                <div class="feature-item">
-                    <div class="icon">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <h3>السرية</h3>
-                    <p>نحافظ على سرية معلومات عملائنا ونلتزم بأخلاقيات المهنة</p>
-                </div>
-                <div class="feature-item">
-                    <div class="icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <h3>الالتزام</h3>
-                    <p>نلتزم بالمواعيد والإجراءات ونسعى دائماً لتحقيق أفضل النتائج</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- History Timeline Section -->
-    <section class="history-section">
+    <!-- History Timeline Section (ENHANCED) -->
+    <section class="history-section fade-in">
         <div class="container">
             <div class="section-header">
                 <h2>مسيرتنا</h2>
@@ -219,8 +1042,48 @@
         </div>
     </section>
 
-    <!-- Team Section Preview -->
-    <section class="team-preview-section">
+    <!-- Why Choose Us Section (ENHANCED) -->
+    <section class="why-choose-us-section fade-in">
+        <div class="container">
+            <div class="section-header">
+                <h2>لماذا تختار مكتب الحسن للمحاماة</h2>
+                <p>نلتزم بتقديم خدمات قانونية متميزة تلبي توقعات عملائنا</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>الخبرة القانونية</h3>
+                    <p>فريق من المحامين ذوي الخبرة والكفاءة في مختلف المجالات القانونية</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>الاحترافية</h3>
+                    <p>نلتزم بأعلى معايير الاحترافية والمهنية في تقديم الخدمات القانونية</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>السرية</h3>
+                    <p>نحافظ على سرية معلومات عملائنا ونلتزم بأخلاقيات المهنة</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>الالتزام</h3>
+                    <p>نلتزم بالمواعيد والإجراءات ونسعى دائماً لتحقيق أفضل النتائج</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section Preview (ENHANCED) -->
+    <section class="team-preview-section fade-in">
         <div class="container">
             <div class="section-header">
                 <h2>فريق العمل</h2>
@@ -229,7 +1092,11 @@
             <div class="team-preview-grid">
                 <div class="team-member">
                     <div class="member-image">
-                        <img src="../images/team/member1.jpg" alt="محمد يوسف الحسن">
+                            <img src="../images/ghost/ETAaenwXsAEqpVu.jpg"
+     alt="مكتب الحسن للمحاماة"
+     style="
+      
+        object-fit:fill;  ">
                     </div>
                     <div class="member-info">
                         <h3>محمد يوسف الحسن</h3>
@@ -244,7 +1111,9 @@
                 </div>
                 <div class="team-member">
                     <div class="member-image">
-                        <img src="../images/team/member2.jpg" alt="أحمد عبدالله">
+                        <img  style="
+      
+        object-fit:fill;  " src="../images/ghost/Nd-z56aoaUS7gEo-.jpg" alt="أحمد عبدالله">
                     </div>
                     <div class="member-info">
                         <h3>أحمد عبدالله</h3>
@@ -259,7 +1128,11 @@
                 </div>
                 <div class="team-member">
                     <div class="member-image">
-                        <img src="../images/team/member3.jpg" alt="سارة محمد">
+                        <img style="
+      
+        object-fit:fill;  " src="../images/ghost/female.jpg" alt="سارة محمد">
+
+
                     </div>
                     <div class="member-info">
                         <h3>سارة محمد</h3>
@@ -344,7 +1217,29 @@
         <i class="fas fa-arrow-up"></i>
     </a>
 
-    <!-- JavaScript -->
+    <!-- JavaScript for Animations -->
+    <script>
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+
+    <!-- Main JavaScript File -->
     <script src="../js/main.js"></script>
 </body>
 </html>

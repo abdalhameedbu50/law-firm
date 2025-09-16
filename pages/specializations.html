@@ -4,12 +4,485 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مجالات التخصص - مكتب الحسن للمحاماة</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/nav-update.css">
+   <link rel="stylesheet" href="../css/combine.css">
+    
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+
+
+     <style>
+        
+        /* Enhanced Specializations Overview */
+        .specializations-overview-section {
+            padding: 6rem 0;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            margin: -3rem 2rem 0;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .specializations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .specialization-item {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .specialization-item:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .specialization-image {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .specialization-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8));
+            z-index: 1;
+        }
+
+        .specialization-image i {
+            font-size: 4rem;
+            color: white;
+            z-index: 2;
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .specialization-item:hover .specialization-image i {
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 3;
+        }
+
+        .specialization-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .read-more-btn {
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .read-more-btn:hover {
+            background: white;
+            transform: translateY(-2px);
+        }
+
+        .specialization-content {
+            padding: 2rem;
+        }
+
+        .specialization-content h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .specialization-content p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .service-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Enhanced Expertise Approach Section */
+        .expertise-approach-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            margin: 4rem 0;
+        }
+
+        .approach-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .approach-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .approach-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8));
+        }
+
+        .approach-image i {
+            font-size: 6rem;
+            color: white;
+            z-index: 2;
+            position: relative;
+        }
+
+        .approach-text p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .approach-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .approach-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .approach-list i {
+            color: #667eea;
+            margin-left: 1rem;
+            font-size: 1.2rem;
+        }
+
+        /* Enhanced Success Stories Section */
+        .success-stories-section {
+            padding: 6rem 0;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            margin: 0 2rem;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .stories-slider {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .story-item {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .story-item:hover::before {
+            left: 100%;
+        }
+
+        .story-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .story-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+        }
+
+        .story-icon i {
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .story-item:hover .story-icon {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 8px 25px rgba(79, 172, 254, 0.4);
+        }
+
+        .story-text {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .client-info h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .client-info span {
+            color: #667eea;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Enhanced CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 4rem 0;
+            margin: 4rem 0;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: moveBackground 20s linear infinite;
+        }
+
+        @keyframes moveBackground {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-content h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .primary-btn, .secondary-btn {
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .primary-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .primary-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        .secondary-btn {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .secondary-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+       
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .header-content {
+                flex-wrap: wrap;
+            }
+
+            .specializations-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .approach-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stories-slider {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .specializations-overview-section,
+            .success-stories-section {
+                margin: 2rem 1rem;
+            }
+        }
+
+       
+    </style>
+
+
+
 </head>
 <body>
     <!-- Header Section -->
@@ -75,15 +548,11 @@
     <!-- Page Banner -->
     <section class="page-banner">
         <div class="container">
-            <h1>مجالات التخصص</h1>
-            <ul class="breadcrumb">
-                <li><a href="../index.html">الرئيسية</a></li>
-                <li>مجالات التخصص</li>
-            </ul>
+           
+          
         </div>
     </section>
 
-    <!-- Specializations Overview Section -->
     <section class="specializations-overview-section">
         <div class="container">
             <div class="section-header">
@@ -94,7 +563,7 @@
                 <!-- Specialization Item 1 -->
                 <div class="specialization-item">
                     <div class="specialization-image">
-                        <img src="../images/specializations/industry-energy.jpg" alt="الصناعة والطاقة">
+                        <i class="fas fa-industry"></i>
                         <div class="overlay">
                             <a href="specializations/industry-energy.html" class="read-more-btn">اقرأ المزيد</a>
                         </div>
@@ -109,7 +578,7 @@
                 <!-- Specialization Item 2 -->
                 <div class="specialization-item">
                     <div class="specialization-image">
-                        <img src="../images/specializations/entertainment-cinema.jpg" alt="الترفيه والسينما">
+                        <i class="fas fa-film"></i>
                         <div class="overlay">
                             <a href="specializations/entertainment-cinema.html" class="read-more-btn">اقرأ المزيد</a>
                         </div>
@@ -124,7 +593,7 @@
                 <!-- Specialization Item 3 -->
                 <div class="specialization-item">
                     <div class="specialization-image">
-                        <img src="../images/specializations/real-estate-contracting.jpg" alt="العقارات والمقاولات">
+                        <i class="fas fa-building"></i>
                         <div class="overlay">
                             <a href="specializations/real-estate-contracting.html" class="read-more-btn">اقرأ المزيد</a>
                         </div>
@@ -139,7 +608,7 @@
                 <!-- Specialization Item 4 -->
                 <div class="specialization-item">
                     <div class="specialization-image">
-                        <img src="../images/specializations/finance-banking.jpg" alt="المالية والمصرفية">
+                        <i class="fas fa-university"></i>
                         <div class="overlay">
                             <a href="specializations/finance-banking.html" class="read-more-btn">اقرأ المزيد</a>
                         </div>
@@ -154,7 +623,7 @@
                 <!-- Specialization Item 5 -->
                 <div class="specialization-item">
                     <div class="specialization-image">
-                        <img src="../images/specializations/labor-employment.jpg" alt="العمل والعمال">
+                        <i class="fas fa-users"></i>
                         <div class="overlay">
                             <a href="specializations/labor-employment.html" class="read-more-btn">اقرأ المزيد</a>
                         </div>
@@ -169,7 +638,7 @@
                 <!-- Specialization Item 6 -->
                 <div class="specialization-item">
                     <div class="specialization-image">
-                        <img src="../images/specializations/healthcare-insurance.jpg" alt="الرعاية الصحية والتأمين">
+                        <i class="fas fa-heartbeat"></i>
                         <div class="overlay">
                             <a href="specializations/healthcare-insurance.html" class="read-more-btn">اقرأ المزيد</a>
                         </div>
@@ -193,7 +662,7 @@
             </div>
             <div class="approach-content">
                 <div class="approach-image">
-                    <img src="../images/expertise-approach.jpg" alt="منهجية التخصص القانوني">
+                    <i class="fas fa-cogs"></i>
                 </div>
                 <div class="approach-text">
                     <p>في مكتب الحسن للمحاماة، نؤمن بأن التخصص القانوني هو مفتاح تقديم خدمات قانونية متميزة. لذلك، قمنا بتطوير فريق من المحامين والمستشارين القانونيين المتخصصين في مختلف المجالات القانونية لتلبية احتياجات عملائنا المتنوعة.</p>
