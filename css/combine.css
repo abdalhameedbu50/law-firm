@@ -74,7 +74,8 @@ img {
 .container {
     max-width: 1300px;
     margin: 0 auto;
-     padding: var(--container-padding);
+      padding: 0 auto;
+     
 
 }
 
@@ -214,18 +215,20 @@ header {
     left: 0;
     width: 100%;
     z-index: 1000;
-    height: 140px; /* Fixed height for layout stability */
+    height: 120px; /* Fixed height for layout stability */
 }
 
 .header-content {
+  
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* ✅ Correct value */
     align-items: center;
     height: 100%;
-    padding: 20px 30px;
     flex-wrap: nowrap;
-     min-width: 0; 
+  
 }
+  
+
 
 /* Logo - Right aligned in RTL */
 .logo {
@@ -249,15 +252,7 @@ header {
 }
 
 /* Navigation */
-.main-nav {
-    
-     flex: 1 1 auto; /* Allow grow, but don’t force full space */
-    max-width: 65%; /* Prevent it from hogging space */
-    overflow: hidden;
-    display: flex;
-    justify-content: flex-start;
-    margin: 0 30px;
-}
+
 
 .main-nav ul {
     display: flex;
@@ -304,6 +299,7 @@ header {
 /* Dropdown Menu */
 .dropdown {
     position: relative;
+    z-index: 101;
 }
 
 .dropdown-menu {
@@ -988,9 +984,12 @@ footer {
 /* =============== RESPONSIVE STYLES =============== */
 @media (max-width: 1200px) {
     .container {
-        max-width: 960px;
+        max-width: 1000px;
     }
     
+    .logo img {
+         height:7rem
+    }
     .main-nav ul li {
         margin: 0 5px;
     }
@@ -1015,7 +1014,7 @@ footer {
     }
 
     .logo img {
-        
+         height:7rem
     }
 
     .main-nav {
