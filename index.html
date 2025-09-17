@@ -13,6 +13,686 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* ========== THEME COLORS ========== */
+            --primary-dark:  #705732;        /* Deep brown (buttons, gradients) */
+            --primary-medium: #ac864c;      /* Medium brown (borders, hovers) */
+            --primary-light: #b99c6f;       /* Light brown (timeline line top) */
+            --primary-lighter: #b9a588;     /* Light accent (dot ring) */
+            --primary-lightest:#d6c5ad;    /* Background sections */
+
+            --accent-gold: #895f20;         /* Gold (dates, highlights) */
+            --accent-orange:#B08D57;       /* Orange gradient */
+            --accent-red: #B08D57;          /* Timeline dot */
+
+            --text-dark: #3b2a11;              /* Headings */
+            --text-medium: #555;            /* Hover text */
+            --text-light: #666;             /* Paragraphs, descriptions */
+            --bg-white: #fff;               /* Cards, content boxes */
+            --bg-light: #f8f9fa;            /* Section backgrounds */
+
+            --shadow-light: rgba(0, 0, 0, 0.1);
+            --shadow-medium: rgba(0, 0, 0, 0.15);
+            --shadow-dark: rgba(0, 0, 0, 0.2);
+
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, var(--primary-dark), var(--primary-medium));
+            --gradient-accent: linear-gradient(to right, var(--primary-medium), var(--accent-orange));
+            --gradient-contact-top: linear-gradient(to right, var(--primary-dark), var(--accent-orange));
+            --gradient-form: linear-gradient(135deg, #f8f9fa, #ffffff);
+            --gradient-social: linear-gradient(135deg, var(--primary-medium), var(--accent-orange));
+
+            /* Shadows */
+            --shadow-sm: 0 4px 20px var(--shadow-light);
+            --shadow-md: 0 8px 30px var(--shadow-medium);
+            --shadow-lg: 0 15px 60px var(--shadow-dark);
+        }
+
+        /* Enhanced Contact Section */
+        .contact-section {
+            padding: 6rem 0;
+            background: var(--bg-light);
+            position: relative;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1.5" fill="rgba(172,134,76,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+            opacity: 0.4;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-info {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 3rem;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+            transition: all 0.4s ease;
+        }
+
+        .contact-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-contact-top);
+        }
+
+        .contact-info:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(172, 134, 76, 0.2);
+        }
+
+        .contact-info h2 {
+            font-size: 2.2rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info:hover h2 {
+            color: var(--primary-medium);
+        }
+
+        .contact-info > p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(172, 134, 76, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .info-item:hover::before {
+            left: 0;
+        }
+
+        .info-item:hover {
+            transform: translateX(10px);
+        }
+
+        .info-item i {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-primary);
+            color: var(--bg-white);
+            border-radius: 50%;
+            margin-left: 1.5rem;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .info-item:hover i {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .info-item p {
+            color: var(--text-light);
+            font-size: 1rem;
+            line-height: 1.5;
+            position: relative;
+            z-index: 2;
+        }
+
+        .info-item a {
+            color: var(--primary-medium);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .info-item a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-accent);
+            transition: all 0.3s ease;
+        }
+
+        .info-item a:hover {
+            color: var(--accent-gold);
+        }
+
+        .info-item a:hover::after {
+            width: 100%;
+        }
+
+        .social-media {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-social);
+            color: var(--bg-white);
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: scale(0);
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: var(--shadow-md);
+        }
+
+        .social-icon:hover::before {
+            transform: scale(1);
+        }
+
+        /* Enhanced Contact Form */
+        .contact-form {
+            background: var(--gradient-form);
+            border-radius: 12px;
+            padding: 3rem;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .contact-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-contact-top);
+        }
+
+        .contact-form:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--bg-white);
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-medium);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(172, 134, 76, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: var(--gradient-primary);
+            color: var(--bg-white);
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.5s ease;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Enhanced Map Section */
+       /* Enhanced Map Section */
+        .map-section {
+            padding: 6rem 0;
+            background: var(--bg-light);
+        }
+
+        .map-container {
+            margin-top: 3rem;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            height: 500px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .map-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-contact-top);
+            z-index: 2;
+        }
+
+        .map-container:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+
+        /* Enhanced Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--gradient-accent);
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+         /* Enhanced Why Choose Us Section */
+        .why-choose-us-section {
+            padding: 6rem 0;
+            background: var(--bg-white);
+        }
+
+        .why-choose-us-section .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .why-choose-us-section .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .why-choose-us-section .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-item {
+            padding: 2.5rem 2rem;
+            text-align: center;
+            border-radius: 12px;
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            background: var(--bg-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-feature-top);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-item:hover {
+            border-color: var(--primary-medium);
+            transform: translateY(-10px);
+            background: rgba(0, 123, 255, 0.02);
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-item .icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-item .icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: scale(0);
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover .icon {
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        .feature-item:hover .icon::before {
+            transform: scale(1);
+        }
+
+        .feature-item .icon i {
+            font-size: 2rem;
+            color: var(--bg-white);
+            position: relative;
+            z-index: 2;
+        }
+
+        .feature-item h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover h3 {
+            color: var(--primary-medium);
+        }
+
+        .feature-item p {
+            color: var(--text-light);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* Enhanced Cards */
+        .specialization-card,
+        .service-item,
+        .feature-item,
+        .article-card {
+            transition: all 0.4s ease;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+        }
+
+        .specialization-card:hover,
+        .service-item:hover,
+        .feature-item:hover,
+        .article-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .specialization-card::before,
+        .feature-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-accent);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: all 0.4s ease;
+        }       
+
+.clients-slider-container {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+   mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.clients-slider {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.client-item {
+  flex-shrink: 0;
+  box-sizing: border-box;
+  width: 20%; /* Shows exactly 5 items at once */
+  padding: 0 10px;
+}
+
+.client-item img {
+  width: 100%;
+  height: auto;
+  max-height: 80px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Optional: Fade-in animation for section */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .client-item { width: 25%; } /* 4 items */
+}
+
+@media (max-width: 768px) {
+  .client-item { width: 33.333%; } /* 3 items */
+}
+
+@media (max-width: 576px) {
+  .client-item { width: 50%; } /* 2 items */
+}
+
+
+      
+ 
+
+        
+
+        .specialization-card:hover::before,
+        .feature-item:hover::before {
+            transform: scaleX(1);
+        }
+
+        /* Animation classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 992px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .contact-info,
+            .contact-form {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .contact-info,
+            .contact-form {
+                padding: 1.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .info-item {
+                padding: 0.8rem;
+            }
+
+            .social-media {
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header Section -->
@@ -88,162 +768,7 @@
     </section>
 
     <!-- Specializations Section -->
-    <section class="specializations-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>مجالات التخصص</h2>
-                <p>نقدم خدماتنا القانونية في مجموعة متنوعة من المجالات</p>
-            </div>
-            <div class="specializations-grid">
-                <div class="specialization-card">
-                    <div class="icon">
-                        <i class="fas fa-industry"></i>
-                    </div>
-                    <h3>الصناعة والطاقة</h3>
-                    <p>خدمات قانونية متخصصة في قطاع الصناعة والطاقة والتعدين والبتروكيماويات</p>
-                    <a href="pages/specializations/industry-energy.html" class="read-more">اقرأ المزيد</a>
-                </div>
-                <div class="specialization-card">
-                    <div class="icon">
-                        <i class="fas fa-film"></i>
-                    </div>
-                    <h3>الترفيه والسينما</h3>
-                    <p>استشارات قانونية متخصصة في مجال الترفيه والإعلام والسينما والإنتاج الفني</p>
-                    <a href="pages/specializations/entertainment-cinema.html" class="read-more">اقرأ المزيد</a>
-                </div>
-                <div class="specialization-card">
-                    <div class="icon">
-                        <i class="fas fa-building"></i>
-                    </div>
-                    <h3>العقارات والمقاولات</h3>
-                    <p>خدمات قانونية شاملة في مجال العقارات والإنشاءات والمقاولات والتطوير العقاري</p>
-                    <a href="pages/specializations/real-estate-contracting.html" class="read-more">اقرأ المزيد</a>
-                </div>
-                <div class="specialization-card">
-                    <div class="icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>المالية والمصرفية</h3>
-                    <p>استشارات قانونية متخصصة في القطاع المالي والمصرفي والتمويل والاستثمار</p>
-                    <a href="pages/specializations/finance-banking.html" class="read-more">اقرأ المزيد</a>
-                </div>
-                <div class="specialization-card">
-                    <div class="icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>العمل والعمال</h3>
-                    <p>خدمات قانونية في مجال قضايا العمل والعمال وعلاقات الموظفين والتوظيف</p>
-                    <a href="pages/specializations/labor-employment.html" class="read-more">اقرأ المزيد</a>
-                </div>
-                <div class="specialization-card">
-                    <div class="icon">
-                        <i class="fas fa-heartbeat"></i>
-                    </div>
-                    <h3>الرعاية الصحية والتأمين</h3>
-                    <p>استشارات قانونية متخصصة في قطاع الرعاية الصحية والتأمين الطبي والصيدلة</p>
-                    <a href="pages/specializations/healthcare-insurance.html" class="read-more">اقرأ المزيد</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="services-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>خدماتنا القانونية</h2>
-                <p>نقدم مجموعة متكاملة من الخدمات القانونية لتلبية احتياجاتكم</p>
-            </div>
-            <div class="services-list">
-                <div class="service-item">
-                    <div class="icon">
-                        <i class="fas fa-gavel"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3>الاستشارات القانونية</h3>
-                        <p>تقديم استشارات قانونية متخصصة في مختلف المجالات من قبل محامين ذوي خبرة</p>
-                        <a href="pages/services/legal-consultations.html" class="service-btn">اطلب الخدمة</a>
-                    </div>
-                </div>
-                <div class="service-item">
-                    <div class="icon">
-                        <i class="fas fa-file-contract"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3>صياغة العقود</h3>
-                        <p>صياغة وتدقيق مختلف أنواع العقود والاتفاقيات بما يضمن حماية حقوقكم</p>
-                        <a href="pages/services/contract-drafting.html" class="service-btn">اطلب الخدمة</a>
-                    </div>
-                </div>
-                <div class="service-item">
-                    <div class="icon">
-                        <i class="fas fa-copyright"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3>تسجيل حقوق الملكية الفكرية</h3>
-                        <p>تسجيل وحماية العلامات التجارية وبراءات الاختراع وحقوق الملكية الفكرية</p>
-                        <a href="pages/services/intellectual-property.html" class="service-btn">اطلب الخدمة</a>
-                    </div>
-                </div>
-                <div class="service-item">
-                    <div class="icon">
-                        <i class="fas fa-globe"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3>الاستثمار الأجنبي</h3>
-                        <p>تقديم الاستشارات والخدمات القانونية للمستثمرين الأجانب في المملكة</p>
-                        <a href="pages/services/foreign-investment.html" class="service-btn">اطلب الخدمة</a>
-                    </div>
-                </div>
-            </div>
-            <div class="view-all-services">
-                <a href="pages/services.html" class="primary-btn">عرض جميع الخدمات</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Choose Us Section -->
-    <section class="why-choose-us-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>لماذا تختار مكتب الحسن للمحاماة</h2>
-                <p>نلتزم بتقديم خدمات قانونية متميزة تلبي توقعات عملائنا</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-item">
-                    <div class="icon">
-                        <i class="fas fa-balance-scale"></i>
-                    </div>
-                    <h3>الخبرة القانونية</h3>
-                    <p>فريق من المحامين ذوي الخبرة والكفاءة في مختلف المجالات القانونية</p>
-                </div>
-                <div class="feature-item">
-                    <div class="icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3>الاحترافية</h3>
-                    <p>نلتزم بأعلى معايير الاحترافية والمهنية في تقديم الخدمات القانونية</p>
-                </div>
-                <div class="feature-item">
-                    <div class="icon">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <h3>السرية</h3>
-                    <p>نحافظ على سرية معلومات عملائنا ونلتزم بأخلاقيات المهنة</p>
-                </div>
-                <div class="feature-item">
-                    <div class="icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <h3>الالتزام</h3>
-                    <p>نلتزم بالمواعيد والإجراءات ونسعى دائماً لتحقيق أفضل النتائج</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Licenses & Certifications Section -->
-    <section class="licenses-section">
+    <section class="specializations-section fade-in">
         <div class="container">
             <div class="section-header">
                 <h2>تراخيص واعتمادات المكتب</h2>
@@ -282,89 +807,87 @@
         </div>
     </section>
 
-    <!-- Latest Articles Section -->
-    <section class="latest-articles-section">
+
+    <section class="why-choose-us-section fade-in">
         <div class="container">
             <div class="section-header">
-                <h2>آخر المقالات القانونية</h2>
-                <p>اطلع على أحدث المقالات والمستجدات القانونية</p>
+                <h2>لماذا تختار مكتب الحسن للمحاماة</h2>
+                <p>نلتزم بتقديم خدمات قانونية متميزة تلبي توقعات عملائنا</p>
             </div>
-            <div class="articles-grid">
-                <div class="article-card">
-                    <div class="article-image">
-                        <img src="images/article1.jpg" alt="مقال قانوني">
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="icon">
+                        <i class="fas fa-balance-scale"></i>
                     </div>
-                    <div class="article-content">
-                        <span class="date">15 مارس 2025</span>
-                        <h3>التعديلات الجديدة في نظام الشركات السعودي</h3>
-                        <p>نظرة على أهم التعديلات في نظام الشركات السعودي وتأثيرها على بيئة الأعمال</p>
-                        <a href="pages/blog/article1.html" class="read-more">اقرأ المزيد</a>
-                    </div>
+                    <h3>الخبرة القانونية</h3>
+                    <p>فريق من المحامين ذوي الخبرة والكفاءة في مختلف المجالات القانونية</p>
                 </div>
-                <div class="article-card">
-                    <div class="article-image">
-                        <img src="images/article2.jpg" alt="مقال قانوني">
+                <div class="feature-item">
+                    <div class="icon">
+                        <i class="fas fa-handshake"></i>
                     </div>
-                    <div class="article-content">
-                        <span class="date">10 مارس 2025</span>
-                        <h3>حماية حقوق الملكية الفكرية في المملكة</h3>
-                        <p>دليل شامل حول كيفية حماية حقوق الملكية الفكرية والعلامات التجارية في السعودية</p>
-                        <a href="pages/blog/article2.html" class="read-more">اقرأ المزيد</a>
-                    </div>
+                    <h3>الاحترافية</h3>
+                    <p>نلتزم بأعلى معايير الاحترافية والمهنية في تقديم الخدمات القانونية</p>
                 </div>
-                <div class="article-card">
-                    <div class="article-image">
-                        <img src="images/article3.jpg" alt="مقال قانوني">
+                <div class="feature-item">
+                    <div class="icon">
+                        <i class="fas fa-lock"></i>
                     </div>
-                    <div class="article-content">
-                        <span class="date">5 مارس 2025</span>
-                        <h3>الاستثمار الأجنبي في ضوء رؤية 2030</h3>
-                        <p>الفرص والتحديات القانونية للاستثمار الأجنبي في المملكة في ظل رؤية 2030</p>
-                        <a href="pages/blog/article3.html" class="read-more">اقرأ المزيد</a>
-                    </div>
+                    <h3>السرية</h3>
+                    <p>نحافظ على سرية معلومات عملائنا ونلتزم بأخلاقيات المهنة</p>
                 </div>
-            </div>
-            <div class="view-all-articles">
-                <a href="pages/blog.html" class="primary-btn">المزيد من المقالات</a>
+                <div class="feature-item">
+                    <div class="icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>الالتزام</h3>
+                    <p>نلتزم بالمواعيد والإجراءات ونسعى دائماً لتحقيق أفضل النتائج</p>
+                </div>
             </div>
         </div>
     </section>
 
-  <!-- Clients Section -->
-  <section class="clients-section">
-    <div class="container">
-      <div class="section-header">
-        <h2 id="clients-title">عملاؤنا</h2>
-        <p id="clients-subtitle">نفتخر بثقة عملائنا من الشركات والمؤسسات المرموقة</p>
-      </div>
+   
 
-      <div class="clients-slider-container">
-        <div id="clients-logos" class="clients-slider">
-          <div class="client-item"><img src="images/clients/FC_GROUP_color_Full.png" alt="Five Colors Group"></div>
-          <div class="client-item"><img src="images/clients/Cinegraph logo.png" alt="Cinegraph"></div>
-          <div class="client-item"><img src="images/clients/khoyoot_logo.png" alt="خيوط المعازيب"></div>
-          <div class="client-item"><img src="images/clients/ep_saudi_logo-1.png" alt="EP Saudi"></div>
-          <div class="client-item"><img src="images/clients/alkorsi_logo-1.png" alt="الكرسي"></div>
-          <div class="client-item"><img src="images/clients/dar_huwaija_logo-1.png" alt="دار حويجة"></div>
-          <div class="client-item"><img src="images/clients/logo_close.png" alt="Logo Close"></div>
-        </div>
+    <!-- Clients Section -->
+   
+<!-- Clients Section -->
+<!-- Clients Section -->
+<section class="clients-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>عملاؤنا</h2>
+      <p>نفتخر بثقة عملائنا من الشركات والمؤسسات المرموقة</p>
+    </div>
 
-        
-        
+    <div class="clients-slider-container">
+      <div class="clients-slider">
+        <div class="client-item"><img src="images/clients/FC_GROUP_color_Full.png" alt="Five Colors Group"></div>
+        <div class="client-item"><img src="images/clients/Cinegraph logo.png" alt="Cinegraph"></div>
+        <div class="client-item"><img src="images/clients/khoyoot_logo.png" alt="خيوط المعازيب"></div>
+        <div class="client-item"><img src="images/clients/ep_saudi_logo-1.png" alt="EP Saudi"></div>
+        <div class="client-item"><img src="images/clients/alkorsi_logo-1.png" alt="الكرسي"></div>
+        <div class="client-item"><img src="images/clients/dar_huwaija_logo-1.png" alt="دار حويجة"></div>
+        <div class="client-item"><img src="images/clients/logo_close.png" alt="Logo Close"></div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
     <!-- Contact Section -->
-    <section class="contact-section">
+    <section class="contact-section fade-in">
         <div class="container">
+            <div class="section-header">
+                <h2>تواصل معنا</h2>
+                <p>نحن هنا للإجابة على استفساراتكم وتقديم المساعدة القانونية</p>
+            </div>
             <div class="contact-grid">
                 <div class="contact-info">
                     <h2>تواصل معنا</h2>
                     <p>نحن هنا للإجابة على استفساراتكم وتقديم المساعدة القانونية</p>
                     <div class="info-item">
                         <i class="fas fa-phone"></i>
-                        <p><span id="contact-phone">+966 50 316 9240</span></p></p>
+                        <p><span id="contact-phone">+966 50 316 9240</span></p>
                     </div>
                     <div class="info-item">
                         <i class="fab fa-whatsapp"></i>
@@ -372,15 +895,15 @@
                     </div>
                     <div class="info-item">
                         <i class="fas fa-envelope"></i>
-                        <p><span id="contact-email">Info@alhassanlawfirm.com</span></p></p>
+                        <p><span id="contact-email">Info@alhassanlawfirm.com</span></p>
                     </div>
                     <div class="info-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <p><span id="contact-address">المملكة العربية السعودية، الأحساء، شارع الستين</span></p>
                     </div>
                     <div class="social-media">
-                        <a  id="social-twitter" href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                        <a  id="social-linkedin" href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                        <a id="social-twitter" href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a id="social-linkedin" href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
                         <a id="social-facebook" href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
                         <a id="social-instagram" href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -407,11 +930,17 @@
     </section>
 
     <!-- Map Section -->
-    <section class="map-section">
-        <div class="map-container">
-            <!-- Google Maps iframe will be added here -->
-            <div class="map-placeholder">
-                <p>خريطة الموقع</p>
+    <section class="map-section fade-in">
+        <div class="container">
+            <div class="section-header">
+                <h2>موقعنا</h2>
+                <p>يمكنك زيارتنا في مقر المكتب خلال ساعات العمل الرسمية</p>
+                <br>
+            </div>
+            <div class="map-container">
+                <div class="map-placeholder">
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3573.0404522107!2d49.58245!3d25.422889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDI1JzIyLjQiTiA0OcKwMzQnNTYuOCJF!5e0!3m2!1sen!2ssa!4v1617291283757!5m2!1sen!2ssa" allowfullscreen="" loading="lazy"></iframe>
+                </div>
             </div>
         </div>
     </section>
@@ -423,10 +952,6 @@
                 <div class="footer-logo">
                     <a href="index.html">
                          <img id="site-logo" src="images/logo.png" alt="مكتب الحسن للمحاماة"> </a>
-   
-                  
-                   
-
                     <p>مكتب الحسن للمحاماة - حلول قانونية احترافية</p>
                 </div>
                 <div class="footer-links">
@@ -444,8 +969,8 @@
                 </div>
                 <div class="footer-contact">
                     <h3>معلومات الاتصال</h3>
-                    <p><i class="fas fa-phone"></i> <span id="contact-phone">+966 50 316 9240</span></p></p>
-                    <p><i class="fas fa-envelope"></i> <span id="contact-email">Info@alhassanlawfirm.com</span></p></p>
+                    <p><i class="fas fa-phone"></i> <span id="contact-phone">+966 50 316 9240</span></p>
+                    <p><i class="fas fa-envelope"></i> <span id="contact-email">Info@alhassanlawfirm.com</span></p>
                     <p><i class="fas fa-map-marker-alt"></i> <span id="contact-address">المملكة العربية السعودية، الأحساء، شارع الستين</span></p>
                 </div>
                 <div class="footer-newsletter">
@@ -476,5 +1001,386 @@
     <script src="js/main.js"></script>
     <script src="js/clients-slider.js"></script>
     <script src="js/cms-content.js"></script>
+
+    <script>
+        class IndexPageEnhancer {
+            constructor() {
+                this.isScrolling = false;
+                this.scrollTimeout = null;
+                this.init();
+            }
+
+            init() {
+                this.setupScrollAnimations();
+                this.setupBackToTop();
+                this.setupFormEnhancements();
+                this.setupParallaxEffects();
+                this.setupSmoothInteractions();
+                this.setupPreloaderEffects();
+            }
+
+            // Advanced scroll-triggered animations
+            setupScrollAnimations() {
+                const observerOptions = {
+                    threshold: [0.1, 0.3, 0.6],
+                    rootMargin: '0px 0px -50px 0px'
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry, index) => {
+                        if (entry.isIntersecting) {
+                            const delay = entry.target.dataset.delay || index * 100;
+                            
+                            setTimeout(() => {
+                                entry.target.classList.add('visible');
+                                this.triggerCustomAnimation(entry.target);
+                            }, delay);
+                        }
+                    });
+                }, observerOptions);
+
+                // Observe fade-in elements
+                document.querySelectorAll('.fade-in').forEach((el, index) => {
+                    el.dataset.delay = index * 150;
+                    observer.observe(el);
+                });
+
+                // Observe cards for staggered animations (excluding license items for simpler animations)
+                document.querySelectorAll('.specialization-card, .service-item, .feature-item').forEach((el, index) => {
+                    el.dataset.delay = index * 100;
+                    observer.observe(el);
+                });
+                
+                // Simple fade-in only for license items
+                document.querySelectorAll('.license-item').forEach((el) => {
+                    observer.observe(el);
+                });
+            }
+
+            triggerCustomAnimation(element) {
+                if (element.classList.contains('specialization-card')) {
+                    this.animateSpecializationCard(element);
+                } else if (element.classList.contains('service-item')) {
+                    this.animateServiceCard(element);
+                }
+                // Removed complex license card animations
+            }
+
+            // Enhanced back to top with scroll progress
+            setupBackToTop() {
+                const backToTop = document.querySelector('.back-to-top');
+                if (!backToTop) return;
+
+                let ticking = false;
+                const updateScrollProgress = () => {
+                    const scrolled = window.pageYOffset;
+                    
+                    if (scrolled > 500) {
+                        backToTop.classList.add('visible');
+                    } else {
+                        backToTop.classList.remove('visible');
+                    }
+                    ticking = false;
+                };
+
+                window.addEventListener('scroll', () => {
+                    if (!ticking) {
+                        requestAnimationFrame(updateScrollProgress);
+                        ticking = true;
+                    }
+                });
+
+                backToTop.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.smoothScrollToTop();
+                });
+            }
+
+            // Enhanced form with smooth interactions
+            setupFormEnhancements() {
+                const form = document.querySelector('.contact-form form');
+                const inputs = document.querySelectorAll('.contact-form input, .contact-form textarea');
+                
+                if (!form) return;
+
+                inputs.forEach(input => {
+                    this.setupInputEnhancements(input);
+                });
+
+                form.addEventListener('submit', (e) => this.handleFormSubmission(e, form));
+            }
+
+            setupInputEnhancements(input) {
+                input.addEventListener('focus', () => {
+                    input.parentElement.classList.add('focused');
+                    this.createFocusRipple(input);
+                });
+
+                input.addEventListener('blur', () => {
+                    if (!input.value) {
+                        input.parentElement.classList.remove('focused');
+                    }
+                });
+
+                input.addEventListener('input', () => {
+                    input.parentElement.classList.toggle('has-content', input.value.length > 0);
+                });
+            }
+
+            createFocusRipple(input) {
+                const ripple = document.createElement('div');
+                ripple.className = 'focus-ripple';
+                input.parentElement.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 800);
+            }
+
+            handleFormSubmission(e, form) {
+                e.preventDefault();
+                const submitBtn = form.querySelector('.submit-btn');
+                const originalText = submitBtn.textContent;
+                
+                // Animate button
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';
+                submitBtn.disabled = true;
+
+                setTimeout(() => {
+                    submitBtn.innerHTML = '<i class="fas fa-check"></i> تم الإرسال!';
+                    submitBtn.style.background = 'var(--gradient-accent)';
+                    
+                    setTimeout(() => {
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                        submitBtn.style.background = '';
+                        form.reset();
+                    }, 2000);
+                }, 1500);
+            }
+
+            // Subtle parallax effects
+            setupParallaxEffects() {
+                const parallaxElements = document.querySelectorAll('.hero-section, .map-container');
+                
+                const handleParallax = () => {
+                    const scrolled = window.pageYOffset;
+                    
+                    parallaxElements.forEach(el => {
+                        const rect = el.getBoundingClientRect();
+                        if (rect.bottom >= 0 && rect.top <= window.innerHeight) {
+                            const rate = scrolled * -0.3;
+                            el.style.transform = `translateY(${rate * 0.1}px)`;
+                        }
+                    });
+                };
+
+                let ticking = false;
+                window.addEventListener('scroll', () => {
+                    if (!ticking) {
+                        requestAnimationFrame(handleParallax);
+                        ticking = true;
+                    }
+                });
+            }
+
+            // Smooth micro-interactions
+            setupSmoothInteractions() {
+                // Enhanced hover effects for cards (excluding license items for simpler interactions)
+                document.querySelectorAll('.specialization-card, .service-item, .feature-item, .article-card').forEach(card => {
+                    card.addEventListener('mouseenter', () => {
+                        this.createHoverEffect(card);
+                    });
+                });
+
+                // Smooth scroll for internal links
+                document.querySelectorAll('a[href^="#"]').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const target = document.querySelector(link.getAttribute('href'));
+                        if (target) {
+                            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    });
+                });
+            }
+
+            setupPreloaderEffects() {
+                window.addEventListener('load', () => {
+                    document.body.classList.add('loaded');
+                    
+                    // Cascade reveal effect
+                    const sections = document.querySelectorAll('section');
+                    sections.forEach((section, index) => {
+                        setTimeout(() => {
+                            section.classList.add('revealed');
+                        }, index * 100);
+                    });
+                });
+            }
+
+            // Utility functions
+            createHoverEffect(element) {
+                const effect = document.createElement('div');
+                effect.className = 'hover-effect';
+                element.appendChild(effect);
+                
+                setTimeout(() => effect.remove(), 600);
+            }
+
+            animateSpecializationCard(card) {
+                const icon = card.querySelector('.icon');
+                if (icon) {
+                    icon.style.animation = 'bounce 0.6s ease';
+                    setTimeout(() => {
+                        icon.style.animation = '';
+                    }, 600);
+                }
+            }
+
+            animateServiceCard(card) {
+                const icon = card.querySelector('.icon');
+                if (icon) {
+                    icon.style.animation = 'pulse 0.8s ease';
+                    setTimeout(() => {
+                        icon.style.animation = '';
+                    }, 800);
+                }
+            }
+
+            animateLicenseCard(card) {
+                // Removed complex animations - keeping it simple
+            }
+
+            smoothScrollToTop() {
+                const scrollToTop = () => {
+                    const c = document.documentElement.scrollTop || document.body.scrollTop;
+                    if (c > 0) {
+                        window.requestAnimationFrame(scrollToTop);
+                        window.scrollTo(0, c - c / 8);
+                    }
+                };
+                scrollToTop();
+            }
+        }
+
+        // Additional CSS for new animations
+        const additionalStyles = `
+            .back-to-top {
+                position: fixed;
+                bottom: 30px;
+                left: 30px;
+                width: 50px;
+                height: 50px;
+                background: var(--gradient-primary);
+                color: var(--bg-white);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-decoration: none;
+                opacity: 0;
+                transform: translateY(20px);
+                transition: all 0.3s ease;
+                box-shadow: var(--shadow-md);
+                z-index: 1000;
+            }
+
+            .back-to-top.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .back-to-top:hover {
+                transform: translateY(-5px) scale(1.1);
+                box-shadow: var(--shadow-lg);
+            }
+
+            .focus-ripple {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 0;
+                height: 0;
+                background: rgba(172, 134, 76, 0.2);
+                border-radius: 50%;
+                transform: translate(-50%, -50%);
+                animation: focusRipple 0.8s ease;
+                pointer-events: none;
+            }
+
+            @keyframes focusRipple {
+                to {
+                    width: 100px;
+                    height: 100px;
+                    opacity: 0;
+                }
+            }
+
+            .hover-effect {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 0;
+                height: 0;
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 50%;
+                transform: translate(-50%, -50%);
+                animation: hoverRipple 0.6s ease;
+                pointer-events: none;
+            }
+
+            @keyframes hoverRipple {
+                to {
+                    width: 200px;
+                    height: 200px;
+                    opacity: 0;
+                }
+            }
+
+            @keyframes bounce {
+                0%, 20%, 60%, 100% {
+                    transform: translateY(0);
+                }
+                40% {
+                    transform: translateY(-10px);
+                }
+                80% {
+                    transform: translateY(-5px);
+                }
+            }
+
+            @keyframes pulse {
+                0% {
+                    transform: scale(1);
+                }
+                50% {
+                    transform: scale(1.1);
+                }
+                100% {
+                    transform: scale(1);
+                }
+            }
+
+            @keyframes rotateIn {
+                0% {
+                    transform: rotate(-180deg) scale(0);
+                    opacity: 0;
+                }
+                100% {
+                    transform: rotate(0deg) scale(1);
+                    opacity: 1;
+                }
+            }
+        `;
+
+        // Inject additional styles
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = additionalStyles;
+        document.head.appendChild(styleSheet);
+
+        // Initialize the enhanced index page
+        document.addEventListener('DOMContentLoaded', () => {
+            new IndexPageEnhancer();
+        });
+    </script>
 </body>
 </html>

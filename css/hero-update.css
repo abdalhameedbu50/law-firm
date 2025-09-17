@@ -9,6 +9,8 @@
     color: var(--white);
     position: relative;
     margin-top: 90px;
+    margin-left: -10px;
+    margin-right: -10px;
 }
 
 .hero-content {
