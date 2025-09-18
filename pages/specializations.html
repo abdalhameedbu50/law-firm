@@ -472,59 +472,7 @@
         transform: translateY(-3px);
     }
 
-    /* ========== MOBILE MENU & RESPONSIVE ========== */
-    .mobile-menu-toggle {
-        display: none;
-        flex-direction: column;
-        cursor: pointer;
-    }
-
-    .mobile-menu-toggle span {
-        width: 25px;
-        height: 3px;
-        background: var(--text-dark);
-        margin: 3px 0;
-        transition: all 0.3s ease;
-        border-radius: 2px;
-    }
-
-    @media (max-width: 768px) {
-        .main-nav {
-            display: none;
-        }
-
-        .mobile-menu-toggle {
-            display: flex;
-        }
-
-        .header-content {
-            flex-wrap: wrap;
-        }
-
-        .specializations-grid,
-        .stories-slider {
-            grid-template-columns: 1fr;
-        }
-
-        .approach-content {
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-
-        .cta-buttons {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .section-header h2 {
-            font-size: 2rem;
-        }
-
-        .specializations-overview-section,
-        .success-stories-section {
-            margin: 2rem 1rem;
-        }
-    }
+    
     
 </style>
 
