@@ -847,14 +847,14 @@
    
             
             <div class="contact-info-grid">
-                <div class="contact-info-item">
-                    <div class="icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <h3>العنوان</h3>
-                    <p>المملكة العربية السعودية، الأحساء، شارع الستين</p>
-                    <a href="https://goo.gl/maps/123" target="_blank">عرض على الخريطة</a>
+                <a href="https://goo.gl/maps/123" target="_blank" class="contact-info-item">
+                <div class="icon">
+                 <i class="fas fa-map-marker-alt"></i>
                 </div>
+                <h3>العنوان</h3>
+                 <p>المملكة العربية السعودية، الأحساء، شارع الستين</p>
+             <span class="link-text">عرض على الخريطة</span>
+                </a>
                 
                 <div class="contact-info-item">
                     <div class="icon">
@@ -862,27 +862,25 @@
                     </div>
                     <h3>الهاتف</h3>
                     <p>اتصل بنا مباشرة للاستفسارات العاجلة</p>
-                    <a href="tel:+966503169240">+966 50 316 9240</a>
+                  <p><i class="fas fa-phone"></i> <span id="contact-phone" dir="ltr">+966 50 316 9240</span></p></p>
                 </div>
                 
-                <div class="contact-info-item">
-                    <div class="icon">
-                        <i class="fab fa-whatsapp"></i>
-                    </div>
-                    <h3>واتساب</h3>
-                    <p>تواصل معنا عبر واتساب للاستفسارات والمواعيد</p>
-                    <a href="https://wa.me/966503169240" target="_blank">تواصل عبر واتساب</a>
-                </div>
-                
-                <div class="contact-info-item">
+                <a href="https://wa.me/966503169240" target="_blank" class="contact-info-item">
+    <div class="icon">
+        <i class="fab fa-whatsapp"></i>
+    </div>
+    <h3>واتساب</h3>
+    <p>تواصل معنا عبر واتساب للاستفسارات والمواعيد</p>
+    <span class="link-text">تواصل عبر واتساب</span>
+</a>
+   <div class="contact-info-item">
                     <div class="icon">
                         <i class="fas fa-envelope"></i>
                     </div>
                     <h3>البريد الإلكتروني</h3>
                     <p>راسلنا عبر البريد الإلكتروني وسنرد عليك في أقرب وقت</p>
                     <a href="mailto:Info@alhassanlawfirm.com">Info@alhassanlawfirm.com</a>
-                </div>
-            </div>
+                </div>    </div>
         </div>
     </section>
 
@@ -1139,7 +1137,7 @@
                 </div>
                 <div class="footer-contact">
                     <h3>معلومات الاتصال</h3>
-                    <p><i class="fas fa-phone"></i> +966 50 316 9240</p>
+                  <p><i class="fas fa-phone"></i> <span id="contact-phone" dir="ltr">+966 50 316 9240</span></p></p>
                     <p><i class="fas fa-envelope"></i> Info@alhassanlawfirm.com</p>
                     <p><i class="fas fa-map-marker-alt"></i> المملكة العربية السعودية، الأحساء، شارع الستين</p>
                 </div>
@@ -1180,12 +1178,7 @@
             }
 
             init() {
-                this.setupScrollAnimations();
-                this.setupBackToTop();
-                this.setupFormEnhancements();
-                this.setupParallaxEffects();
-                this.setupPreloaderEffects();
-                this.setupSmoothInteractions();
+             
             }
 
             // Advanced scroll-triggered animations with stagger effects

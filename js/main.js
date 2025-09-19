@@ -1,202 +1,289 @@
-// Enhanced Mobile Menu with Arrow Testing - Replace your mobile menu JavaScript
+// Bulletproof Mobile Dropdown Fix for Al-Hassan Law Firm Website
 
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Test and setup arrow fallbacks
-    function setupArrowFallbacks() {
-        const dropdowns = document.querySelectorAll('.dropdown > a');
-        
-        dropdowns.forEach(link => {
-            // Test if CSS triangles are working, if not, use Unicode fallback
-            const afterElement = window.getComputedStyle(link, '::after');
-            
-            // If Font Awesome is not available and CSS triangles might not work
-            if (!document.head.innerHTML.includes('font-awesome') && 
-                !document.head.innerHTML.includes('fontawesome')) {
-                
-                // Use Unicode arrow as backup
-                link.style.setProperty('--arrow-fallback', '"▼"');
-                
-                // Apply inline style for better compatibility
-                const style = document.createElement('style');
-                style.textContent = `
-                    @media (max-width: 992px) {
-                        .dropdown > a::after {
-                            content: var(--arrow-fallback, "▼") !important;
-                            font-family: inherit !important;
-                            font-size: 14px !important;
-                            border: none !important;
-                            width: auto !important;
-                            height: auto !important;
-                            color: var(--primary-color) !important;
-                            font-weight: bold !important;
-                        }
-                        
-                        .dropdown.active > a::after {
-                            color: var(--secondary-color) !important;
-                        }
-                    }
-                `;
-                document.head.appendChild(style);
-            }
-        });
+    // Mobile detection
+    function isMobile() {
+        return window.innerWidth <= 992;
     }
-    
-    // Call arrow fallback setup
-    setupArrowFallbacks();
     
     // Mobile Menu Toggle
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const mainNav = document.querySelector('.main-nav');
-    const body = document.body;
     
     if (mobileMenuToggle) {
         mobileMenuToggle.addEventListener('click', function() {
             this.classList.toggle('active');
             mainNav.classList.toggle('active');
+        });
+    }
+    
+    // BULLETPROOF DROPDOWN SOLUTION
+    // Wait a bit for DOM to be fully ready
+    setTimeout(function() {
+        const dropdowns = document.querySelectorAll('.dropdown');
+        
+        // Process each dropdown
+        dropdowns.forEach((dropdown, index) => {
+            const originalLink = dropdown.querySelector('> a');
+            const submenu = dropdown.querySelector('.dropdown-menu');
             
-            // Prevent body scroll when menu is open
-            if (mainNav.classList.contains('active')) {
-                body.classList.add('menu-open');
-            } else {
-                body.classList.remove('menu-open');
-                // Close all open dropdowns when closing menu
-                const openDropdowns = document.querySelectorAll('.dropdown.active');
-                openDropdowns.forEach(dropdown => {
+            if (originalLink && submenu) {
+                console.log(`Processing dropdown ${index}:`, dropdown);
+                
+                // Store original href for desktop use
+                const originalHref = originalLink.getAttribute('href');
+                
+                // Create a completely new link element
+                const newLink = document.createElement('a');
+                newLink.innerHTML = originalLink.innerHTML;
+                newLink.className = originalLink.className;
+                
+                // Set href conditionally
+                if (isMobile()) {
+                    newLink.setAttribute('href', '#');
+                    newLink.setAttribute('data-original-href', originalHref);
+                } else {
+                    newLink.setAttribute('href', originalHref || '#');
+                }
+                
+                // Replace the original link
+                originalLink.parentNode.replaceChild(newLink, originalLink);
+                
+                // Add mobile-only click handler
+                newLink.addEventListener('click', function(e) {
+                    console.log('Link clicked, isMobile:', isMobile());
+                    
+                    if (isMobile()) {
+                        // FORCE stop everything on mobile
+                        e.preventDefault();
+                        e.stopPropagation();
+                        e.stopImmediatePropagation();
+                        
+                        console.log('Mobile click prevented');
+                        
+                        // Toggle dropdown
+                        const isCurrentlyActive = dropdown.classList.contains('active');
+                        
+                        // Close all other dropdowns
+                        dropdowns.forEach(otherDropdown => {
+                            if (otherDropdown !== dropdown) {
+                                otherDropdown.classList.remove('active');
+                            }
+                        });
+                        
+                        // Toggle current dropdown
+                        if (isCurrentlyActive) {
+                            dropdown.classList.remove('active');
+                            console.log('Dropdown closed');
+                        } else {
+                            dropdown.classList.add('active');
+                            console.log('Dropdown opened');
+                        }
+                        
+                        return false;
+                    } else {
+                        // Desktop: restore original href if it exists and navigate
+                        const originalHref = this.getAttribute('data-original-href');
+                        if (originalHref && originalHref !== '#' && originalHref !== '') {
+                            this.setAttribute('href', originalHref);
+                        }
+                    }
+                });
+                
+                // Disable ALL hover/focus events on mobile
+                ['mouseenter', 'mouseover', 'focus', 'touchstart'].forEach(eventType => {
+                    dropdown.addEventListener(eventType, function(e) {
+                        if (isMobile()) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            return false;
+                        }
+                    });
+                });
+            }
+        });
+        
+        // Handle window resize - update href attributes
+        window.addEventListener('resize', function() {
+            dropdowns.forEach(dropdown => {
+                const link = dropdown.querySelector('> a');
+                if (link) {
+                    const originalHref = link.getAttribute('data-original-href');
+                    
+                    if (isMobile()) {
+                        link.setAttribute('href', '#');
+                        dropdown.classList.remove('active');
+                    } else {
+                        link.setAttribute('href', originalHref || '#');
+                        dropdown.classList.remove('active');
+                    }
+                }
+            });
+            
+            // Close mobile menu if switching to desktop
+            if (!isMobile()) {
+                mainNav.classList.remove('active');
+                mobileMenuToggle.classList.remove('active');
+            }
+        });
+        
+    }, 100); // Small delay to ensure DOM is ready
+    
+    // Enhanced Mobile Menu Scrolling
+    if (mainNav) {
+        mainNav.addEventListener('touchstart', function(e) {
+            this.style.webkitOverflowScrolling = 'touch';
+        });
+        
+        // Handle clicks on non-dropdown links
+        mainNav.addEventListener('click', function(e) {
+            const clickedLink = e.target.closest('a');
+            if (!clickedLink) return;
+            
+            const parentDropdown = clickedLink.closest('.dropdown');
+            const isDropdownParent = parentDropdown && parentDropdown.querySelector('> a') === clickedLink;
+            
+            // If it's not a dropdown parent link (i.e., it's a regular link or dropdown child)
+            if (!isDropdownParent && isMobile()) {
+                // Close mobile menu
+                mainNav.classList.remove('active');
+                mobileMenuToggle.classList.remove('active');
+                
+                // Close all dropdowns
+                document.querySelectorAll('.dropdown').forEach(dropdown => {
                     dropdown.classList.remove('active');
                 });
             }
         });
     }
     
-    // Enhanced Dropdown Menu for Mobile with Visual Feedback
-    const dropdowns = document.querySelectorAll('.dropdown');
-    
-    dropdowns.forEach(dropdown => {
-        const link = dropdown.querySelector('> a'); // Only direct child link
-        
-        if (link) {
-            link.addEventListener('click', function(e) {
-                // Only prevent default on mobile when it's a dropdown parent
-                if (window.innerWidth <= 992) {
-                    e.preventDefault();
-                    
-                    console.log('Dropdown clicked:', dropdown); // Debug log
-                    
-                    // Check if this dropdown is currently active
-                    const isActive = dropdown.classList.contains('active');
-                    
-                    // Close other open dropdowns first
-                    dropdowns.forEach(otherDropdown => {
-                        if (otherDropdown !== dropdown) {
-                            otherDropdown.classList.remove('active');
-                        }
-                    });
-                    
-                    // Toggle current dropdown
-                    if (isActive) {
-                        dropdown.classList.remove('active');
-                    } else {
-                        dropdown.classList.add('active');
-                        
-                        // Smooth scroll to show dropdown if needed
-                        setTimeout(() => {
-                            const dropdownMenu = dropdown.querySelector('.dropdown-menu');
-                            if (dropdownMenu) {
-                                dropdownMenu.scrollIntoView({ 
-                                    behavior: 'smooth', 
-                                    block: 'nearest' 
-                                });
-                            }
-                        }, 100);
-                    }
-                }
-            });
-            
-            // Add touch feedback for better mobile UX
-            link.addEventListener('touchstart', function() {
-                if (window.innerWidth <= 992) {
-                    this.style.backgroundColor = 'var(--neutral-color)';
-                }
-            });
-            
-            link.addEventListener('touchend', function() {
-                if (window.innerWidth <= 992) {
-                    setTimeout(() => {
-                        if (!dropdown.classList.contains('active')) {
-                            this.style.backgroundColor = '';
-                        }
-                    }, 150);
-                }
-            });
-        }
-    });
-    
-    // Close mobile menu when clicking outside
+    // Close dropdowns when clicking outside (mobile only)
     document.addEventListener('click', function(e) {
-        if (window.innerWidth <= 992) {
-            if (!e.target.closest('.main-nav') && !e.target.closest('.mobile-menu-toggle')) {
-                if (mainNav && mainNav.classList.contains('active')) {
-                    if (mobileMenuToggle) mobileMenuToggle.classList.remove('active');
-                    mainNav.classList.remove('active');
-                    body.classList.remove('menu-open');
-                    
-                    // Close all dropdowns
-                    const openDropdowns = document.querySelectorAll('.dropdown.active');
-                    openDropdowns.forEach(dropdown => {
-                        dropdown.classList.remove('active');
-                    });
-                }
-            }
-        }
-    });
-    
-    // Close mobile menu when window is resized to desktop
-    window.addEventListener('resize', function() {
-        if (window.innerWidth > 992) {
-            if (mobileMenuToggle) mobileMenuToggle.classList.remove('active');
-            if (mainNav) mainNav.classList.remove('active');
-            body.classList.remove('menu-open');
+        if (isMobile()) {
+            const clickedInsideNav = e.target.closest('.main-nav');
+            const clickedMenuToggle = e.target.closest('.mobile-menu-toggle');
             
-            // Close all dropdowns
-            const openDropdowns = document.querySelectorAll('.dropdown.active');
-            openDropdowns.forEach(dropdown => {
-                dropdown.classList.remove('active');
-            });
+            if (!clickedInsideNav && !clickedMenuToggle) {
+                document.querySelectorAll('.dropdown').forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
+            }
         }
     });
     
-    // Handle dropdown menu items clicks (navigate to actual pages)
-    const dropdownItems = document.querySelectorAll('.dropdown-menu a');
-    dropdownItems.forEach(item => {
-        item.addEventListener('click', function(e) {
-            // Allow normal navigation for dropdown items
-            // Close mobile menu after clicking a dropdown item
-            if (window.innerWidth <= 992) {
+    // Rest of your existing code...
+    // Back to Top Button
+    const backToTopButton = document.querySelector('.back-to-top');
+    
+    if (backToTopButton) {
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('active');
+            } else {
+                backToTopButton.classList.remove('active');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+    
+    // Form Validation
+    const forms = document.querySelectorAll('form');
+    
+    forms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let isValid = true;
+            const requiredFields = form.querySelectorAll('[required]');
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.classList.add('error');
+                } else {
+                    field.classList.remove('error');
+                }
+            });
+            
+            if (isValid) {
+                const successMessage = document.createElement('div');
+                successMessage.className = 'success-message';
+                successMessage.textContent = 'تم إرسال النموذج بنجاح!';
+                
+                form.appendChild(successMessage);
+                form.reset();
+                
                 setTimeout(() => {
-                    if (mobileMenuToggle) mobileMenuToggle.classList.remove('active');
-                    if (mainNav) mainNav.classList.remove('active');
-                    body.classList.remove('menu-open');
-                }, 100);
+                    successMessage.remove();
+                }, 3000);
             }
         });
     });
     
-    // Debug function to test arrows
-    window.testArrows = function() {
-        const dropdowns = document.querySelectorAll('.dropdown');
-        console.log('Found dropdowns:', dropdowns.length);
-        
-        dropdowns.forEach((dropdown, index) => {
-            console.log(`Dropdown ${index}:`, dropdown);
-            dropdown.classList.toggle('active');
+    // Smooth Scroll for Anchor Links
+    const anchorLinks = document.querySelectorAll('a[href^="#"]:not([href="#"])');
+    
+    anchorLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                if (mainNav && mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                    mobileMenuToggle.classList.remove('active');
+                }
+                
+                document.documentElement.classList.add('smooth-scroll');
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+                
+                setTimeout(() => {
+                    document.documentElement.classList.remove('smooth-scroll');
+                }, 1000);
+            }
         });
-    };
+    });
     
-    // Console log for debugging
-    console.log('Mobile menu script loaded successfully');
-    console.log('Dropdowns found:', document.querySelectorAll('.dropdown').length);
+    // Language Switcher
+    const languageSwitch = document.querySelector('.language-switch a');
     
-    // Rest of your existing JavaScript...
-    // (Keep all your other functions like back to top, form validation, etc.)
+    if (languageSwitch) {
+        languageSwitch.addEventListener('click', function(e) {
+            // Language switching logic here
+        });
+    }
+    
+    // Clients Slider
+    const clientsSlider = document.querySelector('.clients-slider');
+    
+    if (clientsSlider && clientsSlider.children.length > 0) {
+        setInterval(() => {
+            clientsSlider.appendChild(clientsSlider.children[0]);
+        }, 3000);
+    }
+    
+    // Add active class to current page link
+    const currentLocation = window.location.pathname;
+    const navLinks = document.querySelectorAll('.main-nav a');
+    
+    navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentLocation || 
+            currentLocation.includes(link.getAttribute('href')) && link.getAttribute('href') !== 'index.html') {
+            link.classList.add('active');
+        }
+    });
 });

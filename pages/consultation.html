@@ -75,163 +75,37 @@
     <section class="page-banner">
         <div class="container">
           
-        </div>
-    </section>
 
-    <!-- Consultation Form Section -->
-    <section class="consultation-form-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>طلب استشارة قانونية</h2>
-                <p>يرجى تعبئة النموذج أدناه لحجز استشارة قانونية. سيتم تأكيد موعد الاستشارة بعد التحقق من تحويل الرسوم إلى الحساب البنكي للمكتب.</p>
-            </div>
 
-            <!-- Progress Steps -->
-            <div class="progress-steps">
-                <div class="step active">
-                    <div class="step-number">1</div>
-                    <div class="step-title">تعبئة النموذج</div>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <div class="step-title">تحويل الرسوم</div>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <div class="step-title">تأكيد الحجز</div>
-                </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <div class="step-title">تحديد الموعد</div>
-                </div>
-            </div>
-
-            <!-- Consultation Form -->
-            <div class="consultation-form">
-                <form id="consultationForm" action="#" method="post">
-                    <!-- Personal Information -->
-                    <div class="form-section">
-                        <h3>المعلومات الشخصية</h3>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="fullName">الاسم الكامل <span class="required">*</span></label>
-                                <input type="text" id="fullName" name="fullName" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">رقم الهاتف <span class="required">*</span></label>
-                                <input type="tel" id="phone" name="phone" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="email">البريد الإلكتروني <span class="required">*</span></label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="address">العنوان</label>
-                                <input type="text" id="address" name="address">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Consultation Details -->
-                    <div class="form-section">
-                        <h3>تفاصيل الاستشارة</h3>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="consultationType">نوع الاستشارة <span class="required">*</span></label>
-                                <select id="consultationType" name="consultationType" required>
-                                    <option value="">اختر نوع الاستشارة</option>
-                                    <option value="industry-energy">الصناعة والطاقة</option>
-                                    <option value="entertainment-cinema">الترفيه والسينما</option>
-                                    <option value="real-estate-contracting">العقارات والمقاولات</option>
-                                    <option value="finance-banking">المالية والمصرفية</option>
-                                    <option value="labor-employment">العمل والعمال</option>
-                                    <option value="healthcare-insurance">الرعاية الصحية والتأمين</option>
-                                    <option value="other">أخرى</option>
-                                </select>
-                            </div>
-                            <div class="form-group" id="otherTypeGroup" style="display: none;">
-                                <label for="otherType">نوع الاستشارة الأخرى <span class="required">*</span></label>
-                                <input type="text" id="otherType" name="otherType">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="consultationSubject">موضوع الاستشارة <span class="required">*</span></label>
-                            <input type="text" id="consultationSubject" name="consultationSubject" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="consultationDetails">تفاصيل الاستشارة</label>
-                            <textarea id="consultationDetails" name="consultationDetails" rows="5"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="attachments">تحميل مستندات ذات صلة</label>
-                            <input type="file" id="attachments" name="attachments" multiple>
-                            <small>يمكنك تحميل ملفات بصيغة PDF أو Word أو صور (الحد الأقصى: 5 ملفات، 5 ميجابايت لكل ملف)</small>
-                        </div>
-                    </div>
-
-                    <!-- Payment Information -->
-                    <div class="form-section">
-                        <h3>معلومات الدفع</h3>
-                        <div class="bank-details">
-                            <h4>تفاصيل الحساب البنكي</h4>
-                            <p><strong>اسم البنك:</strong> البنك الأهلي السعودي</p>
-                            <p><strong>اسم الحساب:</strong> مكتب الحسن للمحاماة</p>
-                            <p><strong>رقم الحساب:</strong> 12345678901234</p>
-                            <p><strong>رقم الآيبان:</strong> SA1234567890123456789012</p>
-                        </div>
-                        <div class="consultation-fees">
-                            <h4>رسوم الاستشارة</h4>
-                            <p>تختلف رسوم الاستشارة حسب نوع الاستشارة ومدى تعقيدها. سيتم تحديد الرسوم بناءً على نوع الاستشارة المختار.</p>
-                            <div class="fee-display">
-                                <span>رسوم الاستشارة:</span>
-                                <span id="consultationFee">-- ريال سعودي</span>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="transferNumber">رقم التحويل البنكي <span class="required">*</span></label>
-                                <input type="text" id="transferNumber" name="transferNumber" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="transferDate">تاريخ التحويل <span class="required">*</span></label>
-                                <input type="date" id="transferDate" name="transferDate" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="transferReceipt">إيصال التحويل <span class="required">*</span></label>
-                            <input type="file" id="transferReceipt" name="transferReceipt" required>
-                            <small>يرجى إرفاق صورة من إيصال التحويل البنكي (الحد الأقصى: 2 ميجابايت)</small>
-                        </div>
-                    </div>
-
-                    <!-- Terms and Conditions -->
-                    <div class="form-section">
-                        <h3>الشروط والأحكام</h3>
-                        <div class="terms-checkbox">
-                            <input type="checkbox" id="termsAgreement" name="termsAgreement" required>
-                            <label for="termsAgreement">أوافق على <a href="terms-of-service.html" target="_blank">الشروط والأحكام</a> وأقر بأن جميع المعلومات المقدمة صحيحة ودقيقة.</label>
-                        </div>
-                    </div>
-
-                    <!-- Form Buttons -->
-                    <div class="form-buttons">
-                        <button type="reset" class="reset-btn">إعادة تعيين</button>
-                        <button type="submit" class="submit-btn">إرسال الطلب</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="faq-section">
-        <div class="container">
+<div class="container">
             <div class="section-header">
                 <h2>الأسئلة الشائعة حول الاستشارات القانونية</h2>
                 <p>إجابات على الأسئلة الشائعة حول خدمة الاستشارات القانونية</p>
             </div>
+
+
+
+            
+        </div>
+    </section>
+
+    <!-- Consultation Form Section -->
+     <section class="consultation-form-section" style="padding: 60px 0; background: #f9f9f9;">
+    <div class="container">
+        <div class="form-container" style="background: #fff; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);">
+            <h3 style="text-align: center; margin-bottom: 30px; color: var(--primary-color);">نموذج حجز الاستشارة</h3>
+
+            <!-- COGNITO FORM -->
+           <iframe src="https://www.cognitoforms.com/f/8gndJfSiVU6fDhZwcUOOFg/4" allow="payment" style="border:0;width:100%;" height="922"></iframe>
+<script src="https://www.cognitoforms.com/f/iframe.js"></script>
+        </div>
+    </div>
+</section>
+    
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        
             <div class="faq-list">
                 <div class="faq-item">
                     <div class="faq-question">
@@ -305,7 +179,7 @@
                         <i class="fas fa-phone"></i>
                     </div>
                     <h3>الهاتف</h3>
-                    <p>+966 50 316 9240</p>
+                    <p><i class="fas fa-phone"></i> <span id="contact-phone" dir="ltr">+966 50 316 9240</span></p></p>
                     <p>من الأحد إلى الخميس</p>
                     <p>8:00 صباحاً - 5:00 مساءً</p>
                 </div>
@@ -352,7 +226,7 @@
                 </div>
                 <div class="footer-contact">
                     <h3>معلومات الاتصال</h3>
-                    <p><i class="fas fa-phone"></i> +966 50 316 9240</p>
+                    <p><i class="fas fa-phone"></i> <span id="contact-phone" dir="ltr">+966 50 316 9240</span></p></p>
                     <p><i class="fas fa-envelope"></i> Info@alhassanlawfirm.com</p>
                     <p><i class="fas fa-map-marker-alt"></i> المملكة العربية السعودية، الأحساء، شارع الستين</p>
                 </div>

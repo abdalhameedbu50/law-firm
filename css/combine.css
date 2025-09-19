@@ -310,6 +310,7 @@ header {
     width: auto;
     object-fit: contain;
     padding: 5px;
+   
 }
 
 /* Navigation */
@@ -673,84 +674,149 @@ header {
 }
 
 /* =============== LATEST ARTICLES =============== */
+/* === Section Background === */
+/* === Section Background === */
 .latest-articles-section {
     background-color: var(--neutral-color);
-    background-image: linear-gradient(135deg, rgba(160, 125, 90, 0.05) 25%, transparent 25%), 
-                      linear-gradient(225deg, rgba(160, 125, 90, 0.05) 25%, transparent 25%),
-                      linear-gradient(45deg, rgba(160, 125, 90, 0.05) 25%, transparent 25%),
-                      linear-gradient(315deg, rgba(160, 125, 90, 0.05) 25%, var(--neutral-color) 25%);
-    background-size: 20px 20px;
-    background-position: 0 0, 10px 0, 10px -10px, 0px 10px;
+    padding: 60px 20px;
 }
 
+/* === Grid Layout === */
 .articles-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Bigger cards */
+    gap: 40px; /* More spacing */
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
+/* === Article Card === */
 .article-card {
     background-color: var(--white);
-    border-radius: 5px;
+    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    position: relative;
-    border-top: 5px solid var(--secondary-color);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.08);
+    height: 400px; /* Fixed height for bigger cards */
 }
 
-.article-card::before {
-    content: '';
-    position: absolute;
-    top: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-    height: 40px;
-    background-color: var(--white);
-    border-radius: 0 0 50% 50%;
-    border: 1px solid #eee;
-    border-top: none;
-    z-index: 1;
+/* Add hover effect */
+.article-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* === Image Wrapper === */
+.article-image {
+    height: 50%; /* Exactly half the card height */
+    overflow: hidden;
+    position: relative;
 }
 
 .article-image img {
     width: 100%;
-    height: 200px;
+    height: 100%;
     object-fit: cover;
-    position: relative;
-    z-index: 2;
+    display: block;
+    transition: all 0.5s ease;
 }
 
+/* Add image zoom effect on hover */
+.article-card:hover .article-image img {
+    transform: scale(1.05);
+}
+
+/* Direct image styling (for your current JS structure) */
+.article-card > a img {
+    width: 100%;
+    height: 200px; /* Half of 400px card height */
+    object-fit: cover;
+    display: block;
+    transition: all 0.5s ease;
+}
+
+.article-card:hover > a img {
+    transform: scale(1.05);
+}
+
+/* === Content === */
 .article-content {
-    padding: 20px;
-    position: relative;
-    z-index: 2;
+    flex: 1;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
 }
 
+/* Content styling for current JS structure */
+.article-card h3 {
+    font-size: 18px;
+    margin: 15px 20px 10px;
+    color: var(--primary-color);
+    line-height: 1.4;
+    flex-grow: 1;
+}
+
+.article-card h3 a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+.article-card h3 a:hover {
+    color: var(--secondary-color);
+}
+
+.article-card p,
+.article-card .article-excerpt {
+    color: var(--text-color);
+    line-height: 1.6;
+    font-size: 14px;
+    margin: 0 20px 20px;
+    flex-grow: 0;
+}
+
+/* Date styling if you add it later */
 .article-content .date {
     color: var(--text-light);
-    font-size: 14px;
+    font-size: 13px;
+    margin-bottom: 10px;
     display: block;
-    margin-bottom: 10px;
 }
 
-.article-content h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .articles-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .article-card {
+        height: 350px; /* Smaller on mobile */
+    }
+    
+    .article-card > a img {
+        height: 175px; /* Half of mobile card height */
+    }
 }
 
-.article-content p {
-    color: var(--text-light);
-    margin-bottom: 15px;
+@media (max-width: 480px) {
+    .article-card {
+        height: 320px;
+    }
+    
+    .article-card > a img {
+        height: 160px;
+    }
 }
 
-.view-all-articles {
-    text-align: center;
-    margin-top: 40px;
-}
 
 /* =============== CLIENTS =============== */
 .clients-slider {
+     mask-image: linear-gradient(to left, black 90%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to left, black 90%, transparent 100%);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -777,9 +843,50 @@ header {
     opacity: 1;
 }
 
+
+
 .view-all-clients {
     text-align: center;
 }
+
+
+  .map-section {
+            padding: 6rem 0;
+            background: var(--bg-light);
+        }
+
+        .map-container {
+            margin-top: 3rem;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            height: 500px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .map-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-contact-top);
+            z-index: 2;
+        }
+
+        .map-container:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
 
 /* =============== CONTACT =============== */
 .contact-grid {
@@ -1021,7 +1128,9 @@ footer {
 .footer-bottom-links a:hover {
     color: var(--secondary-color);
 }
-
+html.smooth-scroll {
+    scroll-behavior: smooth;
+}
 /* =============== BACK TO TOP =============== */
 .back-to-top {
     position: fixed;
@@ -1086,7 +1195,7 @@ footer {
     }
 }
 
-/* Complete Mobile Menu Fix - Replace your mobile menu CSS with this */
+/* =============== MOBILE MENU FIXES =============== */
 
 @media (max-width: 992px) {
     header {
@@ -1101,44 +1210,45 @@ footer {
         height: 7rem;
     }
 
+    /* FIXED MOBILE NAVIGATION */
     .main-nav {
         display: none;
         position: absolute;
         top: 120px; /* Match header height */
         right: 0;
-        left: 0;
+        left: 0; /* Full width */
         width: 100%;
+        max-height: calc(100vh - 120px); /* Prevent overflow */
         background-color: var(--white);
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         z-index: 1000;
         
-        /* Fix scrolling issues */
-        max-height: calc(100vh - 120px); /* Viewport height minus header */
-        overflow-y: auto; /* Enable vertical scrolling */
+        /* ENABLE SCROLLING */
+        overflow-y: auto;
         overflow-x: hidden;
+        -webkit-overflow-scrolling: touch; /* Smooth iOS scrolling */
         
-        /* Smooth animation */
-        transform: translateY(-10px);
-        opacity: 0;
-        transition: all 0.3s ease;
+        /* Remove flex alignment that was causing issues */
+        align-items: stretch;
     }
 
     .main-nav.active {
-        display: block;
-        transform: translateY(0);
-        opacity: 1;
+        display: block; /* Changed from flex to block */
     }
 
     .main-nav ul {
         flex-direction: column;
-        padding: 0;
+        width: 100%;
         margin: 0;
+        padding: 0;
+        min-height: auto; /* Allow natural height */
     }
 
     .main-nav ul li {
         width: 100%;
         margin: 0;
         border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        display: block; /* Ensure block display */
     }
 
     .main-nav ul li a {
@@ -1146,130 +1256,47 @@ footer {
         text-align: right;
         display: block;
         width: 100%;
-        position: relative;
-        transition: all 0.3s ease;
     }
 
-    /* Special styling for dropdown parent links */
-    .dropdown > a {
-        background-color: var(--white);
-        border-left: 3px solid transparent;
-        display: flex !important;
-        justify-content: space-between;
-        align-items: center;
-        cursor: pointer;
-    }
-
-    .dropdown.active > a {
-        background-color: var(--neutral-color);
-        border-left: 3px solid var(--secondary-color);
-        color: var(--primary-color);
-    }
-
-    /* Arrow indicators for dropdowns - Multiple fallback options */
-    .dropdown > a::after {
-        content: '';
-        width: 0;
-        height: 0;
-        border-left: 6px solid transparent;
-        border-right: 6px solid transparent;
-        border-top: 8px solid var(--primary-color);
-        transition: all 0.3s ease;
-        margin-left: 10px;
-        flex-shrink: 0;
-    }
-
-    .dropdown.active > a::after {
-        transform: rotate(180deg);
-        border-top-color: var(--secondary-color);
-    }
-
-    /* Alternative arrow using Unicode (backup) */
-    .dropdown > a::before {
-        content: '▼';
-        font-size: 12px;
-        color: var(--primary-color);
-        margin-left: 10px;
-        transition: all 0.3s ease;
-        display: none; /* Hidden by default, shown if CSS triangles don't work */
-    }
-
-    .dropdown.active > a::before {
-        transform: rotate(180deg);
-        color: var(--secondary-color);
-    }
-
-    /* Font Awesome fallback (if available) */
-    @supports (font-family: 'Font Awesome 5 Free') {
-        .dropdown > a::after {
-            content: '\f107';
-            font-family: 'Font Awesome 5 Free';
-            font-weight: 900;
-            font-size: 14px;
-            border: none;
-            width: auto;
-            height: auto;
-            color: var(--primary-color);
-        }
-        
-        .dropdown.active > a::after {
-            color: var(--secondary-color);
-        }
-    }
-
-    /* Dropdown Menu Fixes */
+    /* FIXED DROPDOWN MENU */
     .dropdown-menu {
         position: static;
         box-shadow: none;
-        background-color: var(--neutral-color);
         opacity: 1;
         visibility: visible;
         transform: none;
-        display: none; /* Hidden by default */
+        display: none;
         width: 100%;
         padding: 0;
+        background-color: var(--neutral-color); /* Different background for distinction */
         border-radius: 0;
-        border-top: 2px solid var(--secondary-color);
-        
-        /* Smooth slide animation */
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease;
+        max-height: none; /* Remove height restrictions */
+        overflow: visible; /* Allow content to show */
+         display: none;
     }
 
     .dropdown.active .dropdown-menu {
         display: block;
-        max-height: 500px; /* Adjust based on your menu items */
+        animation: slideDown 0.3s ease;
     }
 
     .dropdown-menu li {
         display: block !important;
-        padding: 0;
+        width: 100%;
         margin: 0;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        padding: 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
 
     .dropdown-menu li a {
-        display: block;
-        padding: 12px 30px; /* More indentation for sub-items */
-        background-color: var(--neutral-color);
-        color: var(--primary-color);
-        font-size: 14px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        transition: all 0.3s ease;
-        white-space: nowrap;
-        text-align: right;
-        border-left: none;
-    }
-
-    .dropdown-menu li:last-child a {
+        padding: 12px 30px; /* Extra left padding for sub-items */
+        background-color: transparent;
         border-bottom: none;
+        font-size: 14px;
     }
 
     .dropdown-menu li a:hover {
-        background-color: var(--primary-color);
-        color: var(--white);
-        padding-right: 35px;
+        background-color: rgba(160, 125, 90, 0.1);
     }
 
     .mobile-menu-toggle {
@@ -1277,123 +1304,60 @@ footer {
         margin-left: 0;
     }
 
-    /* Enhanced mobile menu styling */
-    .main-nav ul li a:hover {
-        background-color: var(--neutral-color);
-        color: var(--primary-color);
+    /* Add slide animation */
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            max-height: 0;
+        }
+        to {
+            opacity: 1;
+            max-height: 300px;
+        }
     }
-    
-    .main-nav ul li a.active {
-        background-color: var(--primary-color);
-        color: var(--white);
-    }
-}
 
-/* Prevent body scroll when menu is open */
-body.menu-open {
-    overflow: hidden;
-}
-
-/* Additional visual enhancements */
-@media (max-width: 992px) {
-    /* Add hover effects for better UX */
-    .dropdown > a:hover {
-        background-color: var(--neutral-color);
-    }
-    
-    .dropdown > a:hover::after,
-    .dropdown > a:hover::before {
-        color: var(--secondary-color);
-    }
-    
-    /* Smooth scrollbar for mobile menu */
-    .main-nav::-webkit-scrollbar {
-        width: 4px;
-    }
-    
-    .main-nav::-webkit-scrollbar-track {
-        background: var(--neutral-color);
-    }
-    
-    .main-nav::-webkit-scrollbar-thumb {
-        background: var(--primary-color);
-        border-radius: 4px;
+    /* Ensure body doesn't scroll when menu is open (optional) */
+    body.menu-open {
+        overflow: hidden;
     }
 }
 
 @media (max-width: 768px) {
-    .container {
-        max-width: 540px;
-    }
-    header{
-        height: 120px;
-    }
-
-    .hero-content h1 {
-        font-size: 50px;
-    }
-
-    .hero-content p {
-        font-size: 18px;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .specializations-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .articles-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .client-logo {
-        width: 33.33%;
+    .main-nav {
+        top: 120px; /* Adjust for mobile header height */
+        max-height: calc(100vh - 120px);
     }
 }
 
-@media (max-width: 576px) {
-    .section-header h2 {
-        font-size: 28px;
-    }
+/* =============== ADDITIONAL MOBILE IMPROVEMENTS =============== */
 
-    .service-item {
-        flex-direction: column;
-    }
+/* Ensure touch scrolling works properly */
+.main-nav {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
 
-    .service-item .icon {
-        width: 100%;
-        height: 100px;
-        border-radius: 5px 5px 0 0;
+/* Better touch targets for mobile */
+@media (max-width: 992px) {
+    .main-nav ul li a {
+        min-height: 44px; /* iOS recommended touch target */
+        display: flex;
+        align-items: center;
     }
-
-    .features-grid {
-        grid-template-columns: 1fr;
+    
+    .dropdown-menu li a {
+        min-height: 40px;
+        display: flex;
+        align-items: center;
     }
+}
 
-    .footer-content {
-        grid-template-columns: 1fr;
-    }
-
-    .footer-bottom {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .footer-bottom-links {
-        margin-top: 10px;
-    }
-
-    .client-logo {
-        width: 50%;
-    }
-
-    :target:before {
-        height: 80px;
-        margin-top: -80px;
+/* Fix for iOS momentum scrolling */
+@media (max-width: 992px) {
+    .main-nav {
+        -webkit-overflow-scrolling: touch;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
     }
 }
 

@@ -1,0 +1,103 @@
+
+
+ body {
+    direction: ltr; /* Change from rtl to ltr */
+}
+
+
+.header-content {
+    justify-content: space-between; /* Keep this */
+    /* But swap the visual order by changing flex-direction or order */
+}
+
+/* Move logo to left */
+.logo {
+    order: 1; /* Logo goes first (left) */
+}
+
+/* Move navigation to center-right */
+.main-nav {
+    order: 2;
+}
+
+/* Move buttons to right */
+.header-buttons {
+    order: 3;
+}
+
+.main-nav ul {
+    justify-content: flex-end; /* Change from flex-start to flex-end */
+}
+
+.main-nav ul li a {
+    text-align: left; /* Change from right */
+}
+
+
+.dropdown-menu {
+    left: 0; /* Change from right: 0 to left: 0 */
+    text-align: left; /* Change from right */
+}
+
+.dropdown-menu li a {
+    text-align: left; /* Change from right */
+}
+
+
+.info-item i {
+    margin-right: 15px; /* Change from margin-left */
+    margin-left: 0;
+}
+
+
+.social-icon {
+    margin-right: 10px; /* Change from margin-left */
+    margin-left: 0;
+}
+
+
+.footer-links h3:after,
+.footer-contact h3:after,
+.footer-newsletter h3:after {
+    left: 0; /* Change from right: 0 to left: 0 */
+}
+
+.footer-contact p i {
+    margin-right: 10px; /* Change from margin-left */
+    margin-left: 0;
+}
+
+.footer-newsletter input {
+    border-radius: 5px 0 0 5px; /* Change from 0 5px 5px 0 */
+}
+
+.footer-newsletter button {
+    border-radius: 0 5px 5px 0; /* Change from 5px 0 0 5px */
+}
+
+.footer-bottom-links a {
+    margin-left: 20px; /* Change from margin-right */
+    margin-right: 0;
+}.back-to-top {
+    right: 30px; /* Change from left: 30px */
+    left: auto;
+}
+
+.read-more {
+    padding-right: 20px; /* Change from padding-left */
+    padding-left: 0;
+}
+
+.read-more:after {
+    right: 0; /* Change from left: 0 */
+    left: auto;
+}
+
+.read-more:hover:after {
+    right: 5px; /* Change from left: 5px */
+    left: auto;
+}
+.mobile-menu-toggle {
+    margin-right: 15px; /* Change from margin-left */
+    margin-left: 0;
+}
