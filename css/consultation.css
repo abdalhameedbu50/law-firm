@@ -2,7 +2,7 @@
 
 /* Page Banner */
 .page-banner {
-    background-image: linear-gradient(rgba(128, 97, 32, 0), rgba(133, 103, 26, 0.8)), url('../images/consultation-banner.jpg');
+ 
     background-size: cover;
     background-position: center;
     height: 300px;

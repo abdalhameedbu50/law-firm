@@ -328,13 +328,13 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <a href="../../index.html">
+                    <a href="../index.html">
                         <img src="../../images/logo.png" alt="Al Hassan Law Firm">
                     </a>
                 </div>
                 <nav class="main-nav">
                     <ul>
-                        <li><a href="../../index.html">Home</a></li>
+                        <li><a href="../index.html">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
                         <li class="dropdown">
                             <a href="services.html">Our Services</a>
@@ -369,7 +369,7 @@
                 <div class="header-buttons">
                     <a href="consultation.html" class="consultation-btn">Book Legal Consultation</a>
                     <div class="language-switch">
-                        <a href="../../ar/pages/blog.html">العربية</a>
+                        <a href="../../pages/blog.html">العربية</a>
                     </div>
                     <div class="mobile-menu-toggle">
                         <span></span>
@@ -479,7 +479,7 @@
                 const linkObj = (entry.link || []).find(l => l.rel === 'alternate');
                 // Extract post ID from Blogger URL
                 const id = entry.id.$t.split('post-')[1];
-                const internalLink = `../blog-post.html?id=${id}`;
+                const internalLink = `blog-post.html?id=${id}`;
                 const published = entry.published ? new Date(entry.published.$t).toLocaleDateString('en-US') : '';
                 const summary = entry.summary && entry.summary.$t ? entry.summary.$t.replace(/<[^>]+>/g, '') : '';
                 const excerpt = summary.length > 150 ? summary.slice(0, 150) + '...' : summary;
