@@ -4,6 +4,8 @@
   position: relative;
   direction: rtl;
   font-family: 'Cairo', 'Tajawal', sans-serif;
+
+  margin-right: -50px;
 }
 
 .clients-slider-container {
